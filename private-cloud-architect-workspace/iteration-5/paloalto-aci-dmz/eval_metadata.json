@@ -1,0 +1,19 @@
+{
+  "eval_id": 10,
+  "eval_name": "paloalto-aci-dmz",
+  "prompt": "We have a Cisco ACI fabric and need to design a DMZ architecture for our private cloud. The DMZ hosts public-facing web servers (OpenStack VMs) and API gateways. We're deploying a Palo Alto PA-5400 HA pair as the perimeter firewall and a pair of F5 BIG-IP i5800 for load balancing. Both need to be inserted into the ACI fabric using Service Graphs. Internal traffic between application tiers should be microsegmented with ACI contracts. We also need SSL decryption on the Palo Alto for inbound HTTPS inspection before traffic hits the F5. Design the full traffic path, ACI Service Graph chaining, Palo Alto zones and policies, F5 virtual server configuration, and the monitoring approach. We use Ansible for all automation.",
+  "assertions": [
+    {"name": "service_graph_chain", "description": "Designs ACI Service Graph chaining: traffic flows through Palo Alto THEN F5 (or explains the ordering decision)", "type": "content_check"},
+    {"name": "paloalto_ha_design", "description": "Addresses PA-5400 HA pair configuration (active/passive or active/active, session sync)", "type": "content_check"},
+    {"name": "paloalto_zones", "description": "Defines specific Palo Alto security zones (Untrust, DMZ, Trust, etc.) and inter-zone policies", "type": "content_check"},
+    {"name": "ssl_decryption", "description": "Designs SSL decryption on Palo Alto (forward proxy or inbound inspection, certificate handling, decryption policy)", "type": "content_check"},
+    {"name": "f5_virtual_servers", "description": "Designs F5 virtual server configuration (VIP, pool, health monitors, SSL profiles)", "type": "content_check"},
+    {"name": "f5_ha_design", "description": "Addresses F5 i5800 HA pair (active/standby, config sync, traffic groups)", "type": "content_check"},
+    {"name": "aci_pbr", "description": "Uses ACI Policy-Based Redirect for transparent service insertion", "type": "content_check"},
+    {"name": "microsegmentation_contracts", "description": "Designs ACI contracts for east-west microsegmentation between application tiers", "type": "content_check"},
+    {"name": "traffic_flow_complete", "description": "Shows complete traffic path: Internet → ACI L3Out → Palo Alto → F5 → Web EPG → App EPG → DB EPG", "type": "content_check"},
+    {"name": "ansible_automation", "description": "Covers Ansible automation for all three platforms (cisco.aci, paloaltonetworks.panos, f5networks.f5_modules)", "type": "content_check"},
+    {"name": "monitoring_health_scores", "description": "Addresses monitoring across ACI (health scores, faults), Palo Alto (ACC, threat logs), and F5 (pool member health)", "type": "content_check"},
+    {"name": "device_package_registration", "description": "Mentions ACI device package registration for Palo Alto and/or F5 on APIC", "type": "content_check"}
+  ]
+}

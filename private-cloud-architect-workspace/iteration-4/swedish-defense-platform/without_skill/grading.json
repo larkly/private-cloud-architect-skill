@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "swedish_classification_levels(BEGRÄNSAT HEMLIG,HEMLIG,KVALIFICERAT HEMLIG)",
+      "passed": false,
+      "evidence": "Document only mentions HEMLIG. Does not enumerate the Swedish classification levels BEGRÄNSAT HEMLIG or KVALIFICERAT HEMLIG anywhere."
+    },
+    {
+      "text": "sakerhetssskyddslagen",
+      "passed": true,
+      "evidence": "Sakerhetsskyddslagen (2018:585) is referenced prominently in the regulatory framework (section 2.1) and throughout the document."
+    },
+    {
+      "text": "fmv_must_accreditation",
+      "passed": true,
+      "evidence": "FMV and MUST accreditation process is detailed in sections 2.2, 9.1, and the full accreditation roadmap in section 15."
+    },
+    {
+      "text": "sapo_clearance_process",
+      "passed": true,
+      "evidence": "Section 8.4 describes clearance verification against Sapo records, periodic re-verification, and immediate suspension on revocation. Section 3 principle 5 references Sapo clearance."
+    },
+    {
+      "text": "tempest_requirements",
+      "passed": true,
+      "evidence": "TEMPEST is covered in section 4.1 (SDIP-27 Level B, shielded room), section 2.2 (Tempestdokumentation), and accreditation roadmap (TEMPEST survey and testing)."
+    },
+    {
+      "text": "cleared_personnel_constraint(12ppl)",
+      "passed": true,
+      "evidence": "Section 14.1 explicitly structures the team around 12 HEMLIG-cleared engineers with detailed role breakdown. Section 3 principle 10 references operational sustainability for 12 cleared engineers."
+    },
+    {
+      "text": "data_sovereignty_sweden",
+      "passed": true,
+      "evidence": "Section 2.3 explicitly states all data must remain within Swedish borders. Section 3 principle 4 reinforces Swedish data sovereignty. No foreign cloud services permitted."
+    },
+    {
+      "text": "air_gap_not_just_firewall",
+      "passed": true,
+      "evidence": "Section 3 principle 1 states air-gap is absolute with no network path. Section 5.1 shows physical separation between zones. Section 10 details sneakernet/physical transfer processes. Not merely a firewall boundary."
+    },
+    {
+      "text": "nationally_approved_crypto",
+      "passed": true,
+      "evidence": "Section 9.1 requires all cryptographic implementations to be approved by MUST for HEMLIG level. Section 3 principle 7 mandates MUST-approved algorithms. HSM must also be MUST-approved (section 9.2)."
+    },
+    {
+      "text": "cross_domain_data_flow",
+      "passed": true,
+      "evidence": "Section 10.1 details the sneakernet import process between unclassified and classified sides. Section 4.3 mentions hardware data diodes for one-way import. Import station (10.2) and staging area in network diagram address cross-domain flow."
+    },
+    {
+      "text": "floss_preference_with_caveat",
+      "passed": false,
+      "evidence": "While the document selects many open-source tools (RKE2, Gitea, Harbor, Flux CD, etc.), it never explicitly states a preference for FLOSS/open-source or discusses caveats around it (e.g., audit ability, support considerations)."
+    },
+    {
+      "text": "no_us_centric_assumptions",
+      "passed": false,
+      "evidence": "Document references US-centric standards: DISA STIG (sections 6.1, 17), FIPS 140-2/3 (section 10.1), CIS Benchmark. RKE2 is recommended partly for DISA STIG compliance. While Swedish frameworks are primary, the reliance on US defense standards without noting Swedish equivalents or caveats is a US-centric assumption."
+    }
+  ]
+}

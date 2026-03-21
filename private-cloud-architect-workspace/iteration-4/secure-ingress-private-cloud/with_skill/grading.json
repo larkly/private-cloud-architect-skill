@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "dmz_zone_design",
+      "passed": true,
+      "evidence": "Section 1 defines a 5-zone architecture with a dedicated DMZ (Zone 2) hosting WAF, reverse proxy, and API gateway. DMZ design rules specify no app logic/data, no DB clients, stateless hosts, no route to data tier."
+    },
+    {
+      "text": "waf_recommendation(specific product,OWASP)",
+      "passed": true,
+      "evidence": "Section 2 specifies Coraza WAF (Apache 2.0, CNCF-associated) with OWASP Core Rule Set (CRS) v4.x. Paranoia levels per rule category are detailed."
+    },
+    {
+      "text": "api_gateway(rate limiting,auth,validation)",
+      "passed": true,
+      "evidence": "Section 3 specifies Apache APISIX with detailed rate limiting tables per endpoint, JWT/OAuth2 auth via Keycloak, and JSON Schema request body validation plus content-type/method/header enforcement."
+    },
+    {
+      "text": "tls_architecture(termination+re-encryption)",
+      "passed": true,
+      "evidence": "Section 6 details TLS termination at HAProxy, re-encryption with internal CA (step-ca) certificates for each segment (DMZ internal, DMZ-to-app, service-to-service mTLS via Cilium, app-to-PostgreSQL). Section 2.3 explicitly states re-encryption before crossing internal firewall."
+    },
+    {
+      "text": "ddos_mitigation",
+      "passed": true,
+      "evidence": "Section 4 covers L3/4 (upstream ISP scrubbing, OPNsense SYN cookies, GeoIP filtering, connection limits) and L7 (APISIX rate limiting, Coraza WAF, CrowdSec collaborative threat intel). Includes a DDoS response runbook."
+    },
+    {
+      "text": "network_segmentation_depth(multi-layer with firewall rules or ACI)",
+      "passed": true,
+      "evidence": "Cisco ACI with separate VRFs, EPGs, and contracts per zone. ACI contracts specify exact protocol/port/source/destination. Kubernetes network policies with default-deny plus explicit allow rules. ACI-CNI plugin integrates K8s policies into fabric hardware."
+    },
+    {
+      "text": "kubernetes_ingress(controller,network policies,service mesh)",
+      "passed": true,
+      "evidence": "nginx-ingress controller specified (Section 5.1 table, Section 12). Default-deny NetworkPolicies with explicit allow rules per namespace. Cilium CNI with mTLS for service-to-service (Section 6.1). While not a full service mesh label, mTLS via Cilium serves the mesh function."
+    },
+    {
+      "text": "ids_ips(Suricata,Snort,or commercial)",
+      "passed": true,
+      "evidence": "Suricata IDS/IPS deployed at perimeter (Section 1.3, Section 8.1, Section 12). Also used for SQLi detection in network traffic as secondary layer (Section 9.3)."
+    },
+    {
+      "text": "siem_integration",
+      "passed": true,
+      "evidence": "Wazuh SIEM (GPLv2) specified in Section 8.1. Correlates WAF, firewall, IDS, API gateway, and application logs (Section 8.4). Custom SQLi detection rules correlating WAF blocks with app errors (Section 9.3). Feeds incident response workflow."
+    },
+    {
+      "text": "sql_injection_prevention(beyond WAF)",
+      "passed": true,
+      "evidence": "Section 9.3 details beyond-WAF controls: parameterized queries enforced via code review and SAST, PostgreSQL least-privilege (no DDL, no pg_catalog), pgaudit anomaly detection for UNION SELECT/information_schema patterns, Suricata network-level SQLi detection, APISIX JSON Schema validation rejecting malformed input pre-application."
+    },
+    {
+      "text": "hipaa_ingress_controls",
+      "passed": true,
+      "evidence": "Section 7 maps architecture to specific HIPAA Security Rule sections (164.312 a-e). Covers access control, audit controls, integrity, transmission security, authentication, minimum necessary, and BAA. PHI audit logging with 6-year retention, immutable logs, SHA-256 integrity verification."
+    },
+    {
+      "text": "floss_choices(specific products)",
+      "passed": true,
+      "evidence": "Section 12 lists ~25 specific products with license types. Key FLOSS picks: OPNsense (BSD), Coraza (Apache 2.0), APISIX (Apache 2.0), Suricata (GPLv2), CrowdSec (MIT), Cilium (Apache 2.0), Wazuh (GPLv2), step-ca (Apache 2.0). Vault BSL acknowledged with OpenBao FLOSS alternative noted."
+    }
+  ]
+}

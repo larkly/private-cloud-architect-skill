@@ -1,0 +1,19 @@
+{
+  "eval_id": 7,
+  "eval_name": "secure-ingress-private-cloud",
+  "prompt": "We run a private cloud on OpenStack with Kubernetes workloads for a healthcare SaaS product. We need to expose our patient portal and REST API to the internet while keeping our backend services and PostgreSQL databases completely internal. We're HIPAA compliant and use Cisco ACI for networking. The ops team wants to use FLOSS wherever possible. We've been hit by DDoS attacks before and had an SQL injection incident last year. How do we design the secure ingress architecture? Include DMZ design, WAF, API gateway, network segmentation, monitoring, and incident response.",
+  "assertions": [
+    {"name": "dmz_zone_design", "description": "Designs a dedicated DMZ zone physically or logically separated from internal networks", "type": "content_check"},
+    {"name": "waf_recommendation", "description": "Recommends specific WAF solution(s) with OWASP Top 10 coverage (ModSecurity, Coraza, or commercial)", "type": "content_check"},
+    {"name": "api_gateway", "description": "Recommends API gateway for REST API protection (rate limiting, auth, validation)", "type": "content_check"},
+    {"name": "tls_architecture", "description": "Addresses TLS termination and re-encryption between zones (not just 'use TLS')", "type": "content_check"},
+    {"name": "ddos_mitigation", "description": "Addresses DDoS mitigation specifically (given their history)", "type": "content_check"},
+    {"name": "network_segmentation_depth", "description": "Designs multi-layer segmentation (perimeter → DMZ → app → data) with specific firewall rules or ACI contracts", "type": "content_check"},
+    {"name": "kubernetes_ingress", "description": "Covers Kubernetes-specific ingress (ingress controller, network policies, service mesh)", "type": "content_check"},
+    {"name": "ids_ips", "description": "Recommends IDS/IPS at the perimeter (Suricata, Snort, or commercial)", "type": "content_check"},
+    {"name": "siem_integration", "description": "Integrates all ingress logs into SIEM for correlation and alerting", "type": "content_check"},
+    {"name": "sql_injection_prevention", "description": "Specifically addresses SQL injection prevention (given their history) beyond just WAF", "type": "content_check"},
+    {"name": "hipaa_ingress_controls", "description": "Addresses HIPAA-specific controls for the internet-facing boundary (encryption, audit, access logging)", "type": "content_check"},
+    {"name": "floss_choices", "description": "Recommends FLOSS solutions where possible (as requested) with specific product names", "type": "content_check"}
+  ]
+}

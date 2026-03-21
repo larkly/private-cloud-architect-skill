@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "nato_classification_correct(full hierarchy NATO RESTRICTED through COSMIC TOP SECRET)",
+      "passed": false,
+      "evidence": "Document mentions NATO SECRET and NATO RESTRICTED (line 69) but never lists the full NATO classification hierarchy (NATO RESTRICTED, NATO CONFIDENTIAL, NATO SECRET, COSMIC TOP SECRET). COSMIC TOP SECRET is absent entirely."
+    },
+    {
+      "text": "nsm_norway_authority",
+      "passed": true,
+      "evidence": "NSM (Nasjonal sikkerhetsmyndighet) is identified as the Norwegian National Security Authority and accreditation authority (lines 31-33, 64, 127, 301-302)."
+    },
+    {
+      "text": "bsi_germany_authority",
+      "passed": true,
+      "evidence": "BSI (Bundesamt fuer Sicherheit in der Informationstechnik) is identified as the German Federal Office for Information Security providing technical guidance (lines 45-47), with additional references to BSI approval requirements throughout."
+    },
+    {
+      "text": "cfcs_denmark_authority",
+      "passed": true,
+      "evidence": "CFCS (Centre for Cyber Security) is identified as the Danish national authority for accreditation of IT systems handling classified data (lines 38-40)."
+    },
+    {
+      "text": "national_enclave_separation",
+      "passed": true,
+      "evidence": "Architecture defines separate national enclaves for Norway, Denmark, and Germany with isolated networks, storage, and access controls (sections 4.3, 4.4, 6.1-6.2). No direct routing between enclaves (line 190)."
+    },
+    {
+      "text": "nato_crypto_requirement",
+      "passed": true,
+      "evidence": "NATO-approved COMSEC is required for NATO encrypted WAN links, e.g., NATO-certified encryptors per SDIP-28 (line 195). Nation-specific approved crypto devices also specified for each nation."
+    },
+    {
+      "text": "cross_domain_between_enclaves",
+      "passed": true,
+      "evidence": "A Cross-Domain Solution (CDS) is the controlled gateway between national enclaves and the NATO shared domain (section 5). No direct national-to-national transfer; data must go through the NATO domain (line 209)."
+    },
+    {
+      "text": "bilateral_security_agreements",
+      "passed": true,
+      "evidence": "Bilateral Security Agreements between Norway-Denmark, Norway-Germany, and Denmark-Germany are explicitly listed as required (lines 53-54). Host Nation Security Agreement and Programme Security Instruction also covered."
+    },
+    {
+      "text": "personnel_clearance_multinational",
+      "passed": true,
+      "evidence": "Section 9.1 details multinational personnel clearance requirements: host nation Norwegian clearance for all staff, NATO SECRET for NATO domain access, and nation-specific clearances for enclave access (lines 338-342)."
+    },
+    {
+      "text": "red_black_separation",
+      "passed": false,
+      "evidence": "The document does not explicitly discuss RED/BLACK separation concepts. While TEMPEST and crypto are mentioned, the specific RED/BLACK terminology and separation principle is not addressed."
+    },
+    {
+      "text": "ncia_accreditation",
+      "passed": true,
+      "evidence": "NCIA (NATO Communications and Information Agency) is referenced for NATO accreditation (line 24), coordination with NSM for shared domain accreditation (lines 127, 302), and as a member of the Security Accreditation Board (line 328)."
+    },
+    {
+      "text": "physical_security_facility",
+      "passed": true,
+      "evidence": "Section 3 covers physical security extensively: concentric security zones (Zone 1-3), TEMPEST zoning, biometric+token+PIN access control, IDS, CCTV, access logging, and national enclave physical separation with dedicated racks/cages (lines 64-79)."
+    }
+  ]
+}

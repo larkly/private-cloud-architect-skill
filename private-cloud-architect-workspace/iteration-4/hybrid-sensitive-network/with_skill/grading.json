@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "sensitivity_boundary_design",
+      "passed": true,
+      "evidence": "Architecture defines distinct BEGRENSET zone (10.10.0.0/16) and Exchange Zone (10.20.0.0/16) with firewall, API gateway, and data sanitization service as the sensitivity boundary between classified and unclassified environments."
+    },
+    {
+      "text": "data_stays_onprem(BEGRENSET never reaches AWS)",
+      "passed": true,
+      "evidence": "Explicitly states 'BEGRENSET data must remain in Norway at all times' and 'AWS only handles UGRADERT data'. ADR-003 codifies this. DLP rules block BEGRENSET-tagged data at the Exchange Zone. BGP never advertises the BEGRENSET CIDR to AWS."
+    },
+    {
+      "text": "approved_vpn_encryption(IPsec or NSM-approved)",
+      "passed": true,
+      "evidence": "IPsec over Direct Connect with AES-256-GCM and IKEv2 on NSM-approved VPN appliance. ADR-002 mandates encryption even over the private link. Document says to verify crypto against NSM's approved list."
+    },
+    {
+      "text": "exchange_zone",
+      "passed": true,
+      "evidence": "Dedicated Exchange Zone (10.20.0.0/16) on-prem with security gateway, API gateway (Kong/APISIX), data sanitization service, and DLP enforcement. ADR-001 makes it a mandatory intermediary for all traffic."
+    },
+    {
+      "text": "api_gateway_boundary",
+      "passed": true,
+      "evidence": "Kong or Apache APISIX deployed in the Exchange Zone performing mTLS + JWT/OAuth2 authentication, request/response payload inspection and sanitization, rate limiting, and full payload audit logging."
+    },
+    {
+      "text": "aws_service_specifics(S3,SageMaker,VPC endpoints)",
+      "passed": true,
+      "evidence": "S3 buckets with VPC endpoint restrictions (aws:sourceVpce), KMS encryption, and access logging. SageMaker in VPC mode with ENIs in Isolated VPC. VPC Endpoints listed for S3, SageMaker API/Runtime, CloudWatch, STS, KMS. OpenTofu code examples included."
+    },
+    {
+      "text": "sikkerhetsloven_compliance",
+      "passed": true,
+      "evidence": "Dedicated compliance mapping table for Sikkerhetsloven covering data sovereignty, access control, audit, cryptographic protection, and incident reporting. Referenced throughout as the governing law for BEGRENSET handling."
+    },
+    {
+      "text": "unified_monitoring(Prometheus,CloudWatch,dashboards)",
+      "passed": true,
+      "evidence": "Prometheus on-prem with Thanos federation. CloudWatch Exporter in Hybrid VPC sends metrics via remote_write to on-prem Thanos. Grafana provides 'single pane of glass' dashboards. Seven specific dashboard panels defined."
+    },
+    {
+      "text": "traffic_flow_visibility(flow logs,anomaly detection)",
+      "passed": true,
+      "evidence": "VPC Flow Logs in both VPCs, Suricata IDS/IPS with deep packet inspection, pmacct/ntopng for NetFlow. Grafana dashboard panels for Exchange Zone throughput, VPC flow summary, and cross-boundary API calls. GuardDuty, Falco/Tetragon for anomaly detection."
+    },
+    {
+      "text": "incident_isolation(cut cloud from on-prem)",
+      "passed": true,
+      "evidence": "Principle 11 states 'Ability to sever the hybrid link within minutes. On-prem continues operating independently.' Alert table includes 'sever hybrid link if confirmed' for leak attempts. DR section confirms BEGRENSET workloads continue independently."
+    },
+    {
+      "text": "eu_north_data_residency(Stockholm=Sweden not Norway)",
+      "passed": true,
+      "evidence": "Document correctly identifies eu-north-1 as Stockholm and explicitly notes Direct Connect 'transits non-Norwegian infrastructure (Stockholm)' requiring IPsec encryption. ADR-003 states 'AWS eu-north-1 is not accredited for Norwegian BEGRENSET data' and that storing BEGRENSET data outside Norway violates Sikkerhetsloven."
+    },
+    {
+      "text": "nsm_grunnprinsipper_applied(four categories)",
+      "passed": true,
+      "evidence": "All four NSM Grunnprinsipper categories explicitly mapped: Identifisere (asset inventory, risk assessment), Beskytte (access control, segmentation, crypto), Oppdage (monitoring, anomaly detection, logging), Handtere (incident response, isolation). Detailed compliance mapping table provided."
+    }
+  ]
+}

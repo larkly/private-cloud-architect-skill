@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "swedish_classification_levels",
+      "passed": true,
+      "evidence": "Glossary lists all three: HEMLIG (Secret), BEGRÄNSAT HEMLIG (Restricted), KVALIFICERAT HEMLIG (Top Secret)."
+    },
+    {
+      "text": "sakerhetssskyddslagen",
+      "passed": true,
+      "evidence": "Säkerhetsskyddslagen (2018:585) is named as the governing law throughout, with dedicated Section 3.1 detailing its four pillars and the implementing Säkerhetsskyddsförordningen (2018:658)."
+    },
+    {
+      "text": "fmv_must_accreditation",
+      "passed": true,
+      "evidence": "FMV and MUST are explicitly named as accreditation authorities in Section 3.2 with detailed role descriptions. FMV grants accreditation; MUST provides SIGINT/TEMPEST guidance and crypto approval."
+    },
+    {
+      "text": "sapo_clearance_process",
+      "passed": true,
+      "evidence": "Säpo is identified as responsible for personnel security clearance (säkerhetsprövning), conducting background checks. Personnel requirements reference Säpo clearances as mandatory for all operators."
+    },
+    {
+      "text": "tempest_requirements",
+      "passed": true,
+      "evidence": "Dedicated Section 5.2 on TEMPEST/emanation security covering SDIP-27 zones, shielded rooms (Faraday cages), red/black separation, TEMPEST-rated equipment, and cable routing distances per MUST guidance."
+    },
+    {
+      "text": "cleared_personnel_constraint",
+      "passed": true,
+      "evidence": "12 cleared engineers explicitly stated as a constraint. Architecture decisions (single cluster, RKE2 simplicity, GitOps automation) are justified by the 12-person team limitation. Section 17.1 is dedicated to this constraint."
+    },
+    {
+      "text": "data_sovereignty_sweden",
+      "passed": true,
+      "evidence": "Requirements table states 'All data must remain within Swedish national borders.' Executive summary confirms 'all processing within Swedish sovereign territory.' Facility must be 'Located within Sweden -- no exceptions.'"
+    },
+    {
+      "text": "air_gap_not_just_firewall",
+      "passed": true,
+      "evidence": "Section 11 states: 'The air gap is physical, not logical. There is no network path -- no firewall rule, no VPN, no proxy -- between this environment and any external network.' Data paths are limited to data diode and sneakernet."
+    },
+    {
+      "text": "nationally_approved_crypto",
+      "passed": true,
+      "evidence": "Section 3.4 states crypto must be approved by FRA or MUST, explicitly noting 'US FIPS 140-2/140-3 validation is NOT sufficient on its own -- FRA/MUST approval is the primary requirement.' Swedish/European products preferred."
+    },
+    {
+      "text": "cross_domain_data_flow",
+      "passed": true,
+      "evidence": "Section 12 covers hardware data diodes (Advenica SecuriCDS), CDS for bi-directional transfer if required, and export requiring sanitization review (sekretessprövning/nedsekretisering) with human review before downgrade."
+    },
+    {
+      "text": "floss_preference_with_caveat",
+      "passed": true,
+      "evidence": "Executive summary states FLOSS prioritized to reduce supply chain risk. Platform choices (RKE2, Ceph, FreeIPA, Keycloak, ArgoCD) are all FLOSS. Data diode is commercial Swedish (Advenica) where certified product required. Crypto must be FRA-approved regardless of open-source status."
+    },
+    {
+      "text": "no_us_centric_assumptions",
+      "passed": true,
+      "evidence": "Swedish framework (Säkerhetsskyddslagen, FMV, MUST, FRA) is primary throughout. FIPS explicitly called out as 'not the Swedish requirement.' US DoD usage of RKE2 noted as supplementary evidence only, not authoritative. No reliance on STIGs or FedRAMP."
+    }
+  ]
+}

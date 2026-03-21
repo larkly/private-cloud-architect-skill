@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "netscaler_current_state",
+      "passed": true,
+      "evidence": "Lines 16-43 detail all current capabilities: L7 content switching, SSL offloading, GSLB with MEP, WAF/AppFW, health monitoring, CPX K8s ingress, NITRO API automation, ACI Service Graph integration, and infrastructure scale (30 vservers, 4 HA pairs, 2 DCs)."
+    },
+    {
+      "text": "f5_comparison",
+      "passed": true,
+      "evidence": "Lines 72-91 provide detailed capability mapping table: iRules/LTM Policies vs Responder/Rewrite, ASM/AWAF vs AppFW (lines 125-132 expand WAF comparison), BIG-IP DNS vs GSLB (lines 113-121), plus iQuery vs MEP, AS3 vs NITRO."
+    },
+    {
+      "text": "haproxy_comparison",
+      "passed": true,
+      "evidence": "Lines 196-213 map every NetScaler feature to HAProxy equivalents, explicitly marking GSLB and WAF as 'NOT BUILT-IN' with High migration complexity. Three-way feature comparison table at lines 383-395 reinforces what HAProxy can and cannot replace."
+    },
+    {
+      "text": "gslb_solution",
+      "passed": true,
+      "evidence": "Lines 229-254 present four GSLB options: PowerDNS with custom health glue, Consul, external DNS (Cloudflare/Route53), or keep NetScaler for GSLB only. BIG-IP DNS covered at lines 113-121. Recommendation provided for each migration path."
+    },
+    {
+      "text": "waf_replacement",
+      "passed": true,
+      "evidence": "Lines 256-281 cover ModSecurity SPOE, Coraza, open-appsec, and dedicated WAF layer options for HAProxy. F5 ASM/AWAF comparison at lines 125-132. Staying on AppFW addressed in Option 3. Performance overhead (10-30%) noted for ModSecurity."
+    },
+    {
+      "text": "k8s_ingress_replacement",
+      "passed": true,
+      "evidence": "F5 CIS detailed at lines 136-141 (noting external proxy model vs in-cluster CPX, latency concerns, SPK mention). HAProxy Ingress Controller at lines 286-291 with Envoy/Contour/Traefik alternatives. CPX modernization in Option 3 at line 351."
+    },
+    {
+      "text": "aci_service_graph_migration",
+      "passed": true,
+      "evidence": "Lines 95-109 detail F5 ACI device package migration: installing device package on APIC, registering devices, creating new Service Graph templates, migrating function profiles, updating Contracts, testing PBR. HAProxy explicitly noted as having no Service Graph support (line 226)."
+    },
+    {
+      "text": "migration_phasing",
+      "passed": true,
+      "evidence": "Lines 438-513 define a 5-phase, 24-week migration plan: Phase 0 assessment/lab (weeks 1-4), Phase 1 infrastructure (weeks 5-8), Phase 2 four migration waves by risk (weeks 9-20), Phase 3 K8s ingress (weeks 16-22), Phase 4 decommission (weeks 21-24). Explicitly not big-bang."
+    },
+    {
+      "text": "octavia_integration",
+      "passed": true,
+      "evidence": "Lines 215-227 cover Octavia deployment: amphora vs OVN provider drivers, ACI interaction (amphorae as OpFlex endpoints), lb-mgmt-net, no ACI Service Graph support, VIP placement on provider networks. Recommendation to use amphora driver for L7."
+    },
+    {
+      "text": "tco_analysis",
+      "passed": true,
+      "evidence": "Three separate cost tables (F5 lines 153-164, HAProxy lines 301-316, NetScaler lines 365-375) with line items for licensing, hardware/compute, migration effort, training, support, and ongoing ops. 5-year TCO projection at lines 412-419 comparing all three options."
+    },
+    {
+      "text": "automation_migration",
+      "passed": true,
+      "evidence": "F5 automation at lines 145-151 (AS3, DO, TS, Ansible f5_modules, Terraform). HAProxy automation at lines 294-299 (Octavia API, Ansible openstack.cloud, Terraform openstack provider). NITRO modernization in Option 3 lines 347-348. Code examples in Appendix B for all three platforms."
+    },
+    {
+      "text": "recommendation_with_rationale",
+      "passed": true,
+      "evidence": "Lines 519-555: Primary recommendation is Stay on NetScaler with 5 stated rationales (lowest risk, ACI Service Graph, GSLB gap, competitive TCO, modernization value). Secondary recommendation F5 if vendor change mandated. HAProxy conditions clearly stated. Weighted decision matrix at lines 421-433."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{"expectations": [
+  {
+    "text": "swedish_classification_levels",
+    "passed": true,
+    "evidence": "Appendix B glossary lists HEMLIG (Secret), KVALIFICERAT HEMLIG (Top Secret), and BEGRANSAT HEMLIG (Restricted/Confidential) as Swedish classification levels. Note: uses ASCII 'BEGRANSAT' rather than 'BEGRÄNSAT' but clearly names the Swedish levels rather than just mapping to US equivalents."
+  },
+  {
+    "text": "sakerhetssskyddslagen",
+    "passed": true,
+    "evidence": "Sakerhetsskyddslagen (2018:585) is referenced as the governing framework throughout, starting from the document header ('Regulatory Framework: Sakerhetsskyddslagen (2018:585)') and with a full compliance mapping in Appendix C mapping its chapters to architecture controls."
+  },
+  {
+    "text": "fmv_must_accreditation",
+    "passed": true,
+    "evidence": "FMV (Forsvarets materielverk) and MUST (Militara underrattelse- och sakerhetstjansten) are explicitly named as accreditation/oversight authorities. Section 3.1 details the accreditation lifecycle under FMV/MUST authority, and Appendix A lists them as key contacts."
+  },
+  {
+    "text": "sapo_clearance_process",
+    "passed": true,
+    "evidence": "Line 41: 'All 12 cleared engineers operate under strict need-to-know and personnel security controls vetted by Sapo.' Appendix A lists Sapo (Sakerhetspolisen) for 'Personnel security clearance vetting'. Section 14 notes only 12 of 40 engineers can operate the platform due to clearance. Appendix B defines 'Sakerhetsproving' as 'Security clearance vetting — Sapo process'."
+  },
+  {
+    "text": "tempest_requirements",
+    "passed": true,
+    "evidence": "Section 4.1 has a dedicated 'TEMPEST Considerations (Signalskydd)' subsection addressing NATO SDIP-27 Zone requirements, Faraday cage shielding for Zone A, controlled separation distances for Zone B, red/black cable separation, and TEMPEST-rated KVM switches."
+  },
+  {
+    "text": "cleared_personnel_constraint",
+    "passed": true,
+    "evidence": "Section 14 designs around the 12-person cleared team: team structure split into 3 sub-teams (6 platform, 3 security/ops, 3 app platform), on-call rotation of 6 pairs covering 24/7 with minimum 2 engineers on-call, four-eyes principle for high-impact ops, vendor access restrictions (line 1118: 'No direct vendor access to the HEMLIG environment'), and Section 14.4 details how the 28 uncleared engineers contribute on the unclassified side."
+  },
+  {
+    "text": "data_sovereignty_sweden",
+    "passed": true,
+    "evidence": "Executive summary: 'Data sovereignty is absolute -- all data, processing, backups, and keys remain within Sweden.' Requirements table: 'Data must be processed and stored within Sweden | Sakerhetsskyddslagen 2018:585 | All infrastructure physically in Sweden'. Line 75: 'All data within Swedish borders, single facility initially.'"
+  },
+  {
+    "text": "air_gap_not_just_firewall",
+    "passed": true,
+    "evidence": "Executive summary: 'Air gap is physical, not logical -- no network path exists between this environment and any other network.' Section 5.1: 'zero connectivity to any external network. There is no internet access, no connection to company unclassified LAN, and no wireless of any kind.' Section 10 details physical sneakernet transfer via removable media. Separate hardware, cabling, and facility rooms are specified."
+  },
+  {
+    "text": "nationally_approved_crypto",
+    "passed": true,
+    "evidence": "Requirements table line 64: 'Cryptographic modules must be Swedish/NATO approved | FRA (Forsvarets radioanstalt) guidance | National crypto for data at rest and in transit.' Section 8.2 notes 'FRA may require specific national cryptographic algorithms for encryption at rest at HEMLIG level.' Section 9.4: 'FRA may mandate specific certificate requirements or use of nationally approved crypto for signalskydd.' Section 7.1 notes FIPS as baseline 'with FRA-approved crypto layered on top for signalskydd.'"
+  },
+  {
+    "text": "cross_domain_data_flow",
+    "passed": false,
+    "evidence": "The document does not address cross-domain solutions, data diodes, or formal mechanisms for moving data between classification levels. Section 10 covers unclassified-to-classified transfer via sneakernet but does not discuss data diodes, CDS (Cross Domain Solutions), or sanitization/downgrade review for moving data from higher to lower classification levels."
+  },
+  {
+    "text": "floss_preference_with_caveat",
+    "passed": true,
+    "evidence": "ADR-010: 'Prefer FLOSS for all software components where equivalent or better functionality exists.' Exceptions acknowledged: 'Cisco networking (justified by defense supply chain), NVIDIA GPU drivers (proprietary required).' Section 7.1 notes FIPS/FRA-approved crypto requirements may constrain choices. Section 8.2 and 9.4 note FRA may mandate specific approved products. The document acknowledges that classified environment crypto requirements (FRA-approved) may limit FLOSS choices."
+  },
+  {
+    "text": "no_us_centric_assumptions",
+    "passed": false,
+    "evidence": "While the Swedish framework is clearly primary throughout, DISA STIG is used as a primary hardening standard alongside CIS, not just for comparison. Line 818: 'Hardened OS (CIS benchmark, DISA STIG applied)'. Line 902: 'OpenSCAP: Nightly scans of all nodes against CIS and STIG profiles'. Line 1242: 'OS hardening: CIS Level 2 + STIG controls applied'. STIG is applied as a primary hardening tool rather than being referenced merely for comparison, and no Swedish-specific hardening baseline is offered as the primary standard."
+  }
+]}

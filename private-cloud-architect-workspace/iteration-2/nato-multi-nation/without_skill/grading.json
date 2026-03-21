@@ -1,0 +1,62 @@
+{"expectations": [
+  {
+    "text": "nato_classification_correct",
+    "passed": false,
+    "evidence": "The document does not list NATO classification levels (NATO RESTRICTED through COSMIC TOP SECRET). It references NATO SECRET throughout and mentions national classification levels, but never enumerates the full NATO classification hierarchy including NATO RESTRICTED, NATO CONFIDENTIAL, NATO SECRET, and COSMIC TOP SECRET."
+  },
+  {
+    "text": "nsm_norway_authority",
+    "passed": true,
+    "evidence": "Section 3.1: 'Norway (Nasjonal Sikkerhetsmyndighet — NSM)' and Section 2.1 table: 'Norwegian Security Act... Nasjonal Sikkerhetsmyndighet (NSM)'. NSM is clearly identified as Norway's national security authority throughout."
+  },
+  {
+    "text": "bsi_germany_authority",
+    "passed": true,
+    "evidence": "Section 3.3: 'Germany (Bundesamt fuer Sicherheit in der Informationstechnik — BSI)' and Section 2.1 table: 'Bundesamt fuer Sicherheit in der Informationstechnik (BSI)'. BSI is identified as Germany's relevant security authority for IT systems."
+  },
+  {
+    "text": "cfcs_denmark_authority",
+    "passed": true,
+    "evidence": "Section 3.2: 'Denmark (Centre for Cybersikkerhed — CFCS)' and Section 2.1 table: 'Centre for Cybersikkerhed (CFCS) / Forsvarets Efterretningstjeneste (FE)'. CFCS is identified as Denmark's relevant authority."
+  },
+  {
+    "text": "national_enclave_separation",
+    "passed": true,
+    "evidence": "Section 6 designs separate enclaves for each nation (NOR, DNK, DEU) with dedicated physical space, compute, storage, and directory services. NATO SECRET is the shared tier (Section 6.2). Section 5.2 states 'Five physically and logically separated networks' and Section 5.3 states 'Physical separation (air gap) between each national enclave network.'"
+  },
+  {
+    "text": "nato_crypto_requirement",
+    "passed": true,
+    "evidence": "Section 10.2 table: 'WAN encryption (NATO) | NATO-approved bulk encryptor | NCOIC-listed (e.g., Thales Datacryptor CP, R&S SITLine)'. Section 5.5 also specifies 'NATO-approved' crypto devices. Section 3.4 comparative matrix lists 'NATO-approved (NCOIC catalogue)' for NATO crypto."
+  },
+  {
+    "text": "cross_domain_between_enclaves",
+    "passed": true,
+    "evidence": "Section 7 is entirely dedicated to Cross-Domain Solution Architecture, including three CDS instances between national enclaves and NATO shared tier, content inspection, human release officer review, policy enforcement rules, and formal release procedures. Section 7.3 details the CDS functional pipeline including export review, content inspection, security label transformation, and import validation."
+  },
+  {
+    "text": "bilateral_security_agreements",
+    "passed": true,
+    "evidence": "Section 2.1 table includes 'Bilateral/Trilateral Security Agreements | Cross-national data handling | Respective national NSAs'. Section 3.2 mentions 'bilateral security arrangement' for Danish data processed in Norway. Section 3.3 requires 'Bilateral security agreement between Germany and Norway covering IT systems.' Section 12.1 Phase 1 includes 'Bilateral/trilateral security arrangement confirmation.'"
+  },
+  {
+    "text": "personnel_clearance_multinational",
+    "passed": true,
+    "evidence": "Section 8.1 explicitly states each person needs: '1. A valid national security clearance at the appropriate level. 2. A NATO Security Clearance Certificate (SCC) at NATO SECRET level (derived from national clearance). 3. A project-specific need-to-know briefing.' Section 8.1 also states 'Personnel access national enclaves ONLY for their own nation' — meaning access to another nation's data requires specific authorization."
+  },
+  {
+    "text": "red_black_separation",
+    "passed": true,
+    "evidence": "Section 4.3 addresses TEMPEST/emanation security extensively: 'the entire Zone 3 area is designed to SDIP-27 Zone 1 standards', TEMPEST testing and certification, and 'Cable routing follows SDIP-29 standards — classified and unclassified cables are physically separated with prescribed minimum distances.' Section 4.4 mentions 'Power filtering / isolation as required by TEMPEST Zone 1 specifications.' The network cable color coding (Section 5.3) also enforces red/black separation."
+  },
+  {
+    "text": "ncia_accreditation",
+    "passed": false,
+    "evidence": "The document does not mention NCIA (NATO Communications and Information Agency) at all. It references NOS (NATO Office of Security), NCSC (NATO Cyber Security Centre), and NCOIC, but NCIA and its role in accreditation of NATO systems is absent."
+  },
+  {
+    "text": "physical_security_facility",
+    "passed": true,
+    "evidence": "Section 4 extensively addresses facility security: 'LIST-X equivalent facility in Norway' (Section 4.1), four physical security zones with access controls (Zone 0 through Zone 3+), badge + biometric access, IDS alarmed 24/7, two-person integrity, national lock/seal requirements, and dedicated national enclave rooms with physical separation. Section 4.2 details enclave physical separation with dedicated cages/rooms and national access controls."
+  }
+]}

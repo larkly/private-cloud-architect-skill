@@ -1,0 +1,17 @@
+{
+  "eval_id": 2,
+  "eval_name": "hybrid-nutanix-aws",
+  "prompt": "Our main data center runs Nutanix (about 80 nodes, mix of NX and Dell XC) and we're happy with it for steady-state workloads. But we're an e-commerce company and during Black Friday / holiday season our traffic goes 10x for about 6 weeks. We've been over-provisioning hardware that sits idle 10 months a year. We want to burst to AWS during peak but we're in healthcare e-commerce so HIPAA compliance is non-negotiable. How do we architect this hybrid setup? We use Ansible heavily and are starting to adopt Kubernetes.",
+  "assertions": [
+    {"name": "nutanix_retained", "description": "Keeps Nutanix as the on-prem steady-state platform (doesn't suggest replacing it)", "type": "content_check"},
+    {"name": "aws_burst_architecture", "description": "Designs specific AWS burst architecture (which services, how scaling works)", "type": "content_check"},
+    {"name": "hipaa_compliance", "description": "Addresses HIPAA compliance across both environments with specific controls", "type": "content_check"},
+    {"name": "hybrid_networking", "description": "Covers hybrid network connectivity (Direct Connect, VPN, or similar)", "type": "content_check"},
+    {"name": "kubernetes_strategy", "description": "Proposes Kubernetes strategy spanning on-prem and cloud (NKE, EKS, or similar)", "type": "content_check"},
+    {"name": "ansible_integration", "description": "Leverages their existing Ansible investment in the hybrid automation", "type": "content_check"},
+    {"name": "cost_analysis", "description": "Includes cost comparison or analysis (burst vs over-provisioning)", "type": "content_check"},
+    {"name": "data_sovereignty", "description": "Addresses where PHI/patient data lives and data residency concerns", "type": "content_check"},
+    {"name": "baa_requirement", "description": "Mentions AWS BAA (Business Associate Agreement) for HIPAA", "type": "content_check"},
+    {"name": "seasonal_scaling_plan", "description": "Describes the operational workflow for scaling up before peak and scaling down after", "type": "content_check"}
+  ]
+}

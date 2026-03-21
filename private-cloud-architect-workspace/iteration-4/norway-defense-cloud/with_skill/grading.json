@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "norwegian_classification_levels(all five)",
+      "passed": true,
+      "evidence": "Section 3 table lists all five: UGRADERT, BEGRENSET, KONFIDENSIELT, HEMMELIG, STRENGT HEMMELIG with Norwegian names and infrastructure implications."
+    },
+    {
+      "text": "sikkerhetsloven",
+      "passed": true,
+      "evidence": "Sikkerhetsloven (2018) referenced throughout as the overarching security act: regulatory framework table, executive summary, physical architecture, transfer procedures, risk assessment, and accreditation approach."
+    },
+    {
+      "text": "nsm_authority(specific role)",
+      "passed": true,
+      "evidence": "NSM identified as accreditation authority (header line 6), referenced for crypto approval, TEMPEST guidance, technical advisories, threat intelligence (NorCERT), and as the body that grants authorization to process HEMMELIG data in Section 15."
+    },
+    {
+      "text": "nsm_grunnprinsipper(primary baseline,not STIGs)",
+      "passed": true,
+      "evidence": "NSM Grunnprinsipper for IKT-sikkerhet listed as primary ICT security baseline in Section 2. Section 11 maps all security controls to its four categories (Identifisere, Beskytte, Oppdage, Handtere). DISA STIGs explicitly called 'Not authoritative in this context' in Section 2."
+    },
+    {
+      "text": "nsm_approved_crypto",
+      "passed": true,
+      "evidence": "NSM crypto product list in regulatory table; NSM-approved cryptography required for encryption at rest and in transit (Section 3); HSM must be NSM-approved (Section 6); distinction made that NSM-approved national crypto is not sufficient for NATO-classified data (Section 10)."
+    },
+    {
+      "text": "klarering_process(8ppl constraint)",
+      "passed": true,
+      "evidence": "Section 4 details the 8 HEMMELIG klarering holders constraint as 'the single most binding operational constraint,' covers on-call rotation implications, role coverage, recommendation to target 12-14 cleared personnel, and references Sikkerhetssamtale process and Klareringsforskriften."
+    },
+    {
+      "text": "nato_interoperability",
+      "passed": true,
+      "evidence": "Dedicated Section 10 covers NATO interoperability: STANAG 4774/4778 for metadata marking, NATO-approved crypto devices, NATO SECRET mapping to HEMMELIG, dedicated namespace architecture, dual accreditation by NSM and NCIA."
+    },
+    {
+      "text": "cross_domain_solutions",
+      "passed": true,
+      "evidence": "Data diodes and cross-domain solutions referenced in network architecture (Rack 4), network diagram, air-gap transfer procedures (Section 9), and as a separate accreditation workstream in Section 15."
+    },
+    {
+      "text": "tempest_requirements",
+      "passed": true,
+      "evidence": "TEMPEST covered in Section 6 with NATO SDIP-27 reference, Zone A/B/C ratings, Faraday cage for Zone A, red/black cable separation, TEMPEST-rated equipment selection, and early TEMPEST assessment recommended in summary."
+    },
+    {
+      "text": "data_sovereignty_norway",
+      "passed": true,
+      "evidence": "Executive summary states 'All data remains in Norway. No cloud provider involvement for classified processing.' Physical location within Norway required (Section 6). Architecture is entirely on-premises with no foreign cloud dependencies."
+    },
+    {
+      "text": "eu_eea_context(NIS2,GDPR via EEA)",
+      "passed": true,
+      "evidence": "Section 2 international context table lists NIS2 Directive as 'Applies via EEA membership -- critical infrastructure obligations' and GDPR as 'Applies via EEA membership -- personal data protection.'"
+    },
+    {
+      "text": "no_us_centric_assumptions",
+      "passed": true,
+      "evidence": "No FedRAMP, IL4/5, ITAR, or US-centric frameworks assumed. DISA STIGs explicitly called not authoritative. CIS Benchmarks used only as supplementary where NSM lacks specific guidance. All primary frameworks are Norwegian (Sikkerhetsloven, NSM) or NATO. NIST referenced only as informative conceptual models."
+    }
+  ]
+}

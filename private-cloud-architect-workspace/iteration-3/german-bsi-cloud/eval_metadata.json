@@ -1,0 +1,19 @@
+{
+  "eval_id": 5,
+  "eval_name": "german-bsi-cloud",
+  "prompt": "We're a German government agency (Bundesbehörde) and we need to build a private cloud for processing VS-NfD (Verschlusssache - Nur für den Dienstgebrauch) data. We must comply with BSI IT-Grundschutz and achieve C5 attestation. We want to use OpenStack and are considering whether we can use FLOSS components throughout or whether we need BSI-approved products for certain layers. Our data must stay within Germany. What architecture do you recommend, and how do we navigate the BSI accreditation process?",
+  "assertions": [
+    {"name": "german_classification_levels", "description": "Correctly names German classification levels (VS-NfD, VS-VERTRAULICH, GEHEIM, STRENG GEHEIM)", "type": "content_check"},
+    {"name": "bsi_grundschutz", "description": "Addresses BSI IT-Grundschutz methodology in detail (not just mentions it — explains what it requires)", "type": "content_check"},
+    {"name": "c5_attestation", "description": "Explains the C5 (Cloud Computing Compliance Criteria Catalogue) attestation process", "type": "content_check"},
+    {"name": "vs_nfd_approved_products", "description": "Discusses VS-NfD approved/certified products and where they're required vs where FLOSS is acceptable", "type": "content_check"},
+    {"name": "bsi_crypto_requirements", "description": "Addresses BSI-specific cryptographic requirements (BSI TR series, BSI-approved algorithms/products)", "type": "content_check"},
+    {"name": "data_sovereignty_germany", "description": "Addresses German data sovereignty, GDPR, and requirement to keep data within German borders", "type": "content_check"},
+    {"name": "grundschutz_methodology", "description": "Describes IT-Grundschutz methodology (Bausteine/modules, threat catalog, cross-referencing, certification levels)", "type": "content_check"},
+    {"name": "floss_vs_certified_analysis", "description": "Provides nuanced analysis of where FLOSS is acceptable vs where BSI-certified products are mandatory", "type": "content_check"},
+    {"name": "openstack_grundschutz_fit", "description": "Specifically addresses how OpenStack maps to or can be accredited under IT-Grundschutz", "type": "content_check"},
+    {"name": "eu_context", "description": "Places German requirements in EU context (NIS2, EUCS, GDPR) not just national framework in isolation", "type": "content_check"},
+    {"name": "accreditation_lifecycle", "description": "Describes the BSI accreditation/certification lifecycle (not just 'get certified' but the ongoing process)", "type": "content_check"},
+    {"name": "no_us_centric_assumptions", "description": "Does NOT default to US frameworks as primary (no STIG as primary hardening standard, no FedRAMP, no IL levels)", "type": "content_check"}
+  ]
+}

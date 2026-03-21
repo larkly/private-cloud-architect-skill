@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "nutanix_retained",
+      "passed": true,
+      "evidence": "The architecture explicitly retains Nutanix as the steady-state platform: 'retains Nutanix as the steady-state platform (where TCO is favorable and HIPAA controls are fully under organizational control)' and proposes right-sizing from 80 to ~50 nodes rather than replacing it."
+    },
+    {
+      "text": "aws_burst_architecture",
+      "passed": true,
+      "evidence": "Section 5 details specific AWS burst architecture including EKS with Cluster Autoscaler/Karpenter, node groups (web-frontend up to 40 instances, api-backend up to 30), ALB, ElastiCache Redis, RDS read replicas, OpenSearch, CloudFront, and S3. Spot instances are recommended for stateless tiers."
+    },
+    {
+      "text": "hipaa_compliance",
+      "passed": true,
+      "evidence": "Section 7 provides a full HIPAA Technical Safeguards Matrix with specific controls for both on-prem and AWS (encryption at rest/transit, access control, audit controls, integrity, transmission security). Includes SCPs restricting non-HIPAA services, AWS Config HIPAA conformance pack, Kyverno policies blocking PHI workloads on AWS, and a risk assessment table."
+    },
+    {
+      "text": "hybrid_networking",
+      "passed": true,
+      "evidence": "Section 5.3 details hybrid connectivity: two dedicated 10Gbps AWS Direct Connect circuits at different locations for resilience, Site-to-Site VPN as tertiary failover, Transit Gateway, BGP routing with BFD for fast failover, MACsec encryption on DX, and optional IPsec overlay."
+    },
+    {
+      "text": "kubernetes_strategy",
+      "passed": true,
+      "evidence": "Section 4.2 recommends RKE2 on-prem (with NKE as alternative), Section 5.4 details EKS on AWS. Section 6 covers workload portability with identical container images, Helm charts with environment-specific values, ArgoCD for GitOps, and Rancher for multi-cluster management spanning both environments."
+    },
+    {
+      "text": "ansible_integration",
+      "passed": true,
+      "evidence": "Section 8 is entirely dedicated to Ansible automation with detailed role structure, collections (kubernetes.core, amazon.aws, nutanix.ncp), and complete burst-activate and burst-deactivate playbooks. The document states 'Since the team is already heavily invested in Ansible, it serves as the primary automation layer.'"
+    },
+    {
+      "text": "cost_analysis",
+      "passed": true,
+      "evidence": "Section 12 provides detailed cost comparison: current state ($1.42M-$2.13M/yr for 80 nodes) vs proposed hybrid ($1.06M-$1.66M/yr), with savings of 25-45%. Includes line-item breakdowns for hardware, licensing, AWS burst compute, Direct Connect, data tier, and optimization strategies like Spot instances."
+    },
+    {
+      "text": "data_sovereignty",
+      "passed": true,
+      "evidence": "ADR-002 states 'All PHI data remains on-premises in Nutanix.' Section 3.2 establishes 'Data gravity on-premises: PHI and primary databases remain on Nutanix... PHI never resides uncontrolled in AWS.' Section 5.5 reinforces 'PHI data (patient information, health records, prescription data) is never replicated to AWS.' SCPs enforce region restriction to us-east-1 and us-west-2."
+    },
+    {
+      "text": "baa_requirement",
+      "passed": true,
+      "evidence": "Section 5.1 states 'All accounts operate under AWS BAA (Business Associate Agreement) for HIPAA.' Section 5.2 lists 'AWS BAA: Execute a Business Associate Agreement with AWS (available through AWS Artifact)' as pre-requisite. Section 7.2 details the full BAA chain including AWS, Nutanix, and Direct Connect providers."
+    },
+    {
+      "text": "seasonal_scaling_plan",
+      "passed": true,
+      "evidence": "Sections 15.1 and 15.2 provide detailed operational checklists: T-4 weeks readiness checks, T-2 weeks burst activation via Ansible playbook, T-1 week gradual traffic ramp (10% -> 30% -> 50%), daily monitoring during peak, then post-peak gradual shift back (30% -> 10% -> 0%), 24h drain, and full teardown with cost reporting. Burst deactivation playbook destroys all AWS resources."
+    }
+  ]
+}

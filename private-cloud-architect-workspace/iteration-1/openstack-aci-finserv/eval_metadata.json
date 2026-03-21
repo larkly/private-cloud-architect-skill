@@ -1,0 +1,17 @@
+{
+  "eval_id": 0,
+  "eval_name": "openstack-aci-finserv",
+  "prompt": "We're a mid-size financial services company (around 500 employees) and we've decided to build our own private cloud instead of continuing to pay AWS bills that keep climbing. We need to support about 500 VMs, we've already bought Cisco Nexus 9000 switches and want to use ACI, and our storage team is leaning toward Ceph. We need to stay compliant with PCI-DSS and SOC2. Can you design the architecture for this? Include networking, storage, compute, identity, monitoring, and automation. We have a small but competent ops team of 6 people.",
+  "assertions": [
+    {"name": "mentions_openstack", "description": "Recommends OpenStack or explains platform choice for IaaS", "type": "content_check"},
+    {"name": "cisco_aci_integration", "description": "Covers Cisco ACI fabric design and integration with the cloud platform (EPGs, contracts, APIC)", "type": "content_check"},
+    {"name": "ceph_storage_design", "description": "Designs Ceph storage architecture with pool layout, replication, or erasure coding", "type": "content_check"},
+    {"name": "pci_dss_compliance", "description": "Addresses PCI-DSS compliance with specific controls or segmentation requirements", "type": "content_check"},
+    {"name": "soc2_compliance", "description": "Addresses SOC2 compliance requirements", "type": "content_check"},
+    {"name": "identity_management", "description": "Covers identity/auth solution (LDAP, FreeIPA, Keycloak, AD, or similar)", "type": "content_check"},
+    {"name": "monitoring_stack", "description": "Specifies a monitoring/observability stack (Prometheus, Grafana, ELK, etc.)", "type": "content_check"},
+    {"name": "automation_strategy", "description": "Covers IaC/automation approach (Ansible, Terraform/OpenTofu, or similar)", "type": "content_check"},
+    {"name": "team_size_appropriate", "description": "Architecture is realistic for a 6-person ops team (mentions operational simplicity, automation to reduce burden, or explicitly addresses team capacity)", "type": "content_check"},
+    {"name": "compute_sizing", "description": "Includes compute node sizing or hardware recommendations for 500 VMs", "type": "content_check"}
+  ]
+}

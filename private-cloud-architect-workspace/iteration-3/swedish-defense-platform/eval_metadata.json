@@ -1,0 +1,19 @@
+{
+  "eval_id": 3,
+  "eval_name": "swedish-defense-platform",
+  "prompt": "We're a Swedish defense contractor (försvarsindustri) and we need to build a private cloud for processing HEMLIG (Secret) classified data. The platform needs to comply with Säkerhetsskyddslagen and be accredited by FMV/MUST. We're leaning toward Kubernetes-based but open to suggestions. We need air-gapped operations, the data must stay in Sweden, and our staff all hold Swedish security clearances via Säpo. What does the architecture look like? We have about 40 engineers but only 12 are cleared for this classification level.",
+  "assertions": [
+    {"name": "swedish_classification_levels", "description": "Correctly names Swedish classification levels (BEGRÄNSAT HEMLIG, HEMLIG, KVALIFICERAT HEMLIG) not just maps to US equivalents", "type": "content_check"},
+    {"name": "sakerhetssskyddslagen", "description": "References Säkerhetsskyddslagen (Swedish Protective Security Act) as the governing framework, not just NIST or generic standards", "type": "content_check"},
+    {"name": "fmv_must_accreditation", "description": "Mentions FMV and/or MUST as the accreditation/oversight authorities", "type": "content_check"},
+    {"name": "sapo_clearance_process", "description": "Acknowledges Säpo role in security clearances and how this constrains operations", "type": "content_check"},
+    {"name": "tempest_requirements", "description": "Addresses TEMPEST/emanation security requirements for Secret-level processing", "type": "content_check"},
+    {"name": "cleared_personnel_constraint", "description": "Designs around the 12-person cleared team constraint (not the full 40), addressing on-call, maintenance windows, vendor restrictions", "type": "content_check"},
+    {"name": "data_sovereignty_sweden", "description": "Explicitly addresses data must remain in Sweden, not just 'on-premises' generically", "type": "content_check"},
+    {"name": "air_gap_not_just_firewall", "description": "Treats air gap as physical separation (separate hardware, cabling, rooms), not just network segmentation", "type": "content_check"},
+    {"name": "nationally_approved_crypto", "description": "Mentions need for nationally approved cryptographic products (not just FIPS or generic TLS)", "type": "content_check"},
+    {"name": "cross_domain_data_flow", "description": "Addresses how data moves between classification levels (data diodes, CDS, sanitization/downgrade review)", "type": "content_check"},
+    {"name": "floss_preference_with_caveat", "description": "Recommends FLOSS where possible but acknowledges that classified environments may require certified/approved products that limit FLOSS choices", "type": "content_check"},
+    {"name": "no_us_centric_assumptions", "description": "Does NOT assume US frameworks as primary (no STIG as primary hardening, no FedRAMP, no IL levels as the framework — may reference for comparison but Swedish framework is primary)", "type": "content_check"}
+  ]
+}

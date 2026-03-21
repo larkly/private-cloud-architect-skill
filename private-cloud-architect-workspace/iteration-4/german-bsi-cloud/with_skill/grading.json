@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "german_classification_levels(all four)",
+      "passed": true,
+      "evidence": "Section 2.1 lists all five levels: OFFEN, VS-NfD, VS-VERTRAULICH, GEHEIM, STRENG GEHEIM in a table with infrastructure impact descriptions."
+    },
+    {
+      "text": "bsi_grundschutz(detail)",
+      "passed": true,
+      "evidence": "Section 7 provides detailed Grundschutz compliance mapping with 20+ specific Bausteine (ISMS.1, ORP.1-5, INF.2, NET.*, SYS.*, DER.*, CON.*, etc.) and Section 7.2 describes the full 7-step IT-Grundschutz process including Strukturanalyse, Schutzbedarfsfeststellung, Modellierung, and Risikoanalyse per BSI-Standard 200-3."
+    },
+    {
+      "text": "c5_attestation",
+      "passed": true,
+      "evidence": "Section 8 covers C5:2020 in depth: all 17 C5 domains listed, Type 1 vs Type 2 attestation explained, 5-phase path to attestation with timelines, Wirtschaftspruefer audit process, and relationship between C5 and IT-Grundschutz (70-80% overlap)."
+    },
+    {
+      "text": "vs_nfd_approved_products",
+      "passed": true,
+      "evidence": "Section 4.1 details mandatory BSI-approved products for VS-NfD: genuscreen/SINA VPN, genugate firewall, Bundesdruckerei smartcards, BSI-evaluated FDE. References 'Liste der zugelassenen IT-Sicherheitsprodukte und -systeme' as authoritative source."
+    },
+    {
+      "text": "bsi_crypto_requirements(TR series)",
+      "passed": true,
+      "evidence": "Section 6.1 maps BSI TR-02102 requirements in detail: TLS 1.2/1.3, AES-256, SHA-256+, ECDHE with brainpoolP256r1, RSA >= 3000 bit, algorithm end-of-life dates, and post-quantum readiness. TR-02102 is referenced throughout the document for crypto configuration."
+    },
+    {
+      "text": "data_sovereignty_germany",
+      "passed": true,
+      "evidence": "Section 9 dedicated to data sovereignty: all data at rest within Germany, no cloud bursting, no US CLOUD Act exposure, German-registered entity, cleared German personnel (Ue1 per SueG), no foreign jurisdiction access, controlled software supply chain."
+    },
+    {
+      "text": "grundschutz_methodology(Bausteine)",
+      "passed": true,
+      "evidence": "Section 7.1 maps 20+ specific Bausteine to architecture components (e.g., SYS.1.3 for Linux, NET.3.2 for firewall, DER.1 for detection). Section 7.2 describes the full methodology: Strukturanalyse, Schutzbedarfsfeststellung, Modellierung, IT-Grundschutz-Check, Risikoanalyse, Implement, Audit."
+    },
+    {
+      "text": "floss_vs_certified_analysis",
+      "passed": true,
+      "evidence": "Section 4 provides thorough analysis: mandatory BSI-approved layers (VPN, firewall, smartcard, disk encryption), FLOSS-appropriate layers (OpenStack, Ceph, Linux, monitoring, SIEM, etc.), gray areas (TLS libraries, host firewalls, IDS), and a summary decision matrix."
+    },
+    {
+      "text": "openstack_grundschutz_fit",
+      "passed": true,
+      "evidence": "Section 5 maps OpenStack services to VS-NfD considerations. Section 7.1 maps Bausteine SYS.1.5 (Virtualization) to KVM/QEMU, OPS.2.2 to C5 cloud criteria. ADR-001 justifies OpenStack for government use. No BSI requirement for a specific hypervisor at VS-NfD level is explicitly stated."
+    },
+    {
+      "text": "eu_context(NIS2,EUCS,GDPR)",
+      "passed": true,
+      "evidence": "Section 2.3 covers NIS2 (NIS2UmsuCG implementation, incident reporting, supply chain), GDPR/DSGVO (Art. 32 security requirements), and EUCS (emerging EU cloud certification scheme with C5 alignment). NATO RESTRICTED also mentioned as separate requirement."
+    },
+    {
+      "text": "accreditation_lifecycle",
+      "passed": true,
+      "evidence": "Section 8.3 details the full lifecycle: Phase 1 preparation (3-6 months), Phase 2 Type 1 attestation, Phase 3 operational period (6-12 months), Phase 4 Type 2 attestation, Phase 5 annual re-attestation. Section 13 provides a 5-phase implementation roadmap spanning 18 months."
+    },
+    {
+      "text": "no_us_centric_assumptions",
+      "passed": true,
+      "evidence": "Document uses BSI IT-Grundschutz Bausteine (not CIS/DISA STIGs, explicitly noted in exec summary), German product names (genuscreen, SINA, Bundesdruckerei), German legal terms (VSA, SueG, Geheimschutzstelle, Wirtschaftspruefer), no FedRAMP/NIST references, explicitly excludes US CLOUD Act exposure."
+    }
+  ]
+}

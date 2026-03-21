@@ -1,0 +1,19 @@
+{
+  "eval_id": 11,
+  "eval_name": "f5-netscaler-migration",
+  "prompt": "We're running an OpenStack private cloud with Cisco ACI networking. Currently we use Citrix NetScaler VPX instances for load balancing (about 30 virtual servers across 4 NetScaler pairs) but we're evaluating a migration to either F5 BIG-IP VE or HAProxy via Octavia. The NetScalers are doing L7 content switching, SSL offloading, GSLB between our two data centers, WAF (application firewall), and health monitoring. Some services use NetScaler CPX as a Kubernetes ingress controller. We need to maintain all these capabilities. What's the migration plan? Compare F5 vs HAProxy/Octavia vs staying on NetScaler, considering ACI Service Graph integration, automation, and total cost of ownership.",
+  "assertions": [
+    {"name": "netscaler_current_state", "description": "Analyzes the current NetScaler capabilities that need to be preserved (content switching, SSL, GSLB, WAF, CPX)", "type": "content_check"},
+    {"name": "f5_comparison", "description": "Detailed comparison of F5 BIG-IP capabilities vs NetScaler (iRules vs Responder/Rewrite, ASM vs AppFW, GTM vs GSLB)", "type": "content_check"},
+    {"name": "haproxy_comparison", "description": "Detailed comparison of HAProxy/Octavia capabilities — what it can and cannot replace (no GSLB, no integrated WAF)", "type": "content_check"},
+    {"name": "gslb_solution", "description": "Addresses GSLB requirement specifically (F5 GTM, PowerDNS/GSLB alternatives, or keeping NetScaler for GSLB only)", "type": "content_check"},
+    {"name": "waf_replacement", "description": "Addresses WAF replacement (F5 ASM, ModSecurity/Coraza with HAProxy, or keep NetScaler AppFW)", "type": "content_check"},
+    {"name": "k8s_ingress_replacement", "description": "Addresses NetScaler CPX replacement for Kubernetes ingress (F5 CIS, nginx-ingress, Traefik, etc.)", "type": "content_check"},
+    {"name": "aci_service_graph_migration", "description": "Addresses ACI Service Graph device package changes during migration", "type": "content_check"},
+    {"name": "migration_phasing", "description": "Provides phased migration plan (not big-bang)", "type": "content_check"},
+    {"name": "octavia_integration", "description": "Explains OpenStack Octavia integration for whichever option is recommended", "type": "content_check"},
+    {"name": "tco_analysis", "description": "Includes TCO comparison across the options (licensing, hardware, operational overhead)", "type": "content_check"},
+    {"name": "automation_migration", "description": "Addresses how automation changes (NITRO API → AS3/Ansible or HAProxy config)", "type": "content_check"},
+    {"name": "recommendation_with_rationale", "description": "Makes a clear recommendation with rationale (not just 'it depends')", "type": "content_check"}
+  ]
+}

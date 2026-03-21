@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "norwegian_classification_levels(all five)",
+      "passed": false,
+      "evidence": "Only HEMMELIG and KONFIDENSIELT are mentioned. The full five levels (UGRADERT, BEGRENSET, KONFIDENSIELT, HEMMELIG, STRENGT HEMMELIG) are not listed."
+    },
+    {
+      "text": "sikkerhetsloven",
+      "passed": true,
+      "evidence": "Section 2.1 covers Sikkerhetsloven in detail, referencing Chapter 5 (Informasjonssikkerhet), Chapter 6 (Personellsikkerhet), Chapter 7 (Fysisk sikring), and Chapter 9 (Anskaffelsessikkerhet)."
+    },
+    {
+      "text": "nsm_authority(specific role)",
+      "passed": true,
+      "evidence": "NSM is identified as the accreditation authority (Section 2.2) and referenced throughout for approvals, guidance, and liaison (Sections 6, 7, 9, 11)."
+    },
+    {
+      "text": "nsm_grunnprinsipper(primary baseline,not STIGs)",
+      "passed": false,
+      "evidence": "NSM Grunnprinsipper is never mentioned. The document references RHEL STIG, CIS benchmarks, and FIPS/STIG-aligned distributions as hardening baselines, which are US-centric frameworks rather than the Norwegian NSM Grunnprinsipper."
+    },
+    {
+      "text": "nsm_approved_crypto",
+      "passed": true,
+      "evidence": "Section 2.2 states 'only NSM-approved crypto devices and algorithms are permitted.' Section 7.2 and 14 reinforce NSM-approved crypto requirements."
+    },
+    {
+      "text": "klarering_process(8ppl constraint)",
+      "passed": true,
+      "evidence": "Section 3.1 explicitly models the 8 cleared personnel constraint with role allocation table. Section 10.3 details staffing model across all 8 FTEs."
+    },
+    {
+      "text": "nato_interoperability",
+      "passed": true,
+      "evidence": "Section 2.3 and Section 6 cover NATO interoperability including STANAG 4774/4778, FMN, NATO SECRET mapping, and NATO gateway architecture."
+    },
+    {
+      "text": "cross_domain_solutions",
+      "passed": true,
+      "evidence": "Section 6.2 details CDS/guard requirements including NSM-accredited products (Thales, Advenica, Everfox/Forcepoint), content inspection, classification label validation, and protocol break."
+    },
+    {
+      "text": "tempest_requirements",
+      "passed": false,
+      "evidence": "TEMPEST is mentioned only in passing: 'TEMPEST-rated devices' for bulk encryptors (line 195) and 'TEMPEST-rated if required' for switches (line 365). No dedicated TEMPEST requirements section or zoning discussion."
+    },
+    {
+      "text": "data_sovereignty_norway",
+      "passed": true,
+      "evidence": "Section 5.1 header states 'Norwegian Sovereign Soil.' The architecture is fully air-gapped and physically located in Norway. Supply chain follows Sikkerhetsloven Chapter 9."
+    },
+    {
+      "text": "eu_eea_context(NIS2,GDPR via EEA)",
+      "passed": false,
+      "evidence": "No mention of EU/EEA context, NIS2 directive, or GDPR anywhere in the document."
+    },
+    {
+      "text": "no_us_centric_assumptions",
+      "passed": false,
+      "evidence": "Multiple US-centric references: RHEL STIG, FIPS, CIS benchmarks as hardening baselines; US DoD Platform One/Iron Bank cited as rationale; STIG-aligned distribution recommended. These are used as primary frameworks instead of Norwegian equivalents like NSM Grunnprinsipper."
+    }
+  ]
+}

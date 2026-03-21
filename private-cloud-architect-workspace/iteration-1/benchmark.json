@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "skill_name": "private-cloud-architect",
+    "skill_path": "/home/bosse/git/tmp/cloud-architect.md",
+    "executor_model": "claude-opus-4-6",
+    "analyzer_model": "claude-opus-4-6",
+    "timestamp": "2026-03-20T18:35:00Z",
+    "evals_run": ["openstack-aci-finserv", "vmware-kubevirt-airgap", "hybrid-nutanix-aws"],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_name": "openstack-aci-finserv",
+      "config": "with_skill",
+      "pass_rate": 1.0,
+      "passed": 10,
+      "total": 10,
+      "time_seconds": 351.6,
+      "tokens": 33512
+    },
+    {
+      "eval_name": "openstack-aci-finserv",
+      "config": "without_skill",
+      "pass_rate": 1.0,
+      "passed": 10,
+      "total": 10,
+      "time_seconds": 428.9,
+      "tokens": 27522
+    },
+    {
+      "eval_name": "vmware-kubevirt-airgap",
+      "config": "with_skill",
+      "pass_rate": 1.0,
+      "passed": 10,
+      "total": 10,
+      "time_seconds": 357.2,
+      "tokens": 33848
+    },
+    {
+      "eval_name": "vmware-kubevirt-airgap",
+      "config": "without_skill",
+      "pass_rate": 1.0,
+      "passed": 10,
+      "total": 10,
+      "time_seconds": 361.3,
+      "tokens": 26104
+    },
+    {
+      "eval_name": "hybrid-nutanix-aws",
+      "config": "with_skill",
+      "pass_rate": 1.0,
+      "passed": 10,
+      "total": 10,
+      "time_seconds": 382.5,
+      "tokens": 35339
+    },
+    {
+      "eval_name": "hybrid-nutanix-aws",
+      "config": "without_skill",
+      "pass_rate": 1.0,
+      "passed": 10,
+      "total": 10,
+      "time_seconds": 461.2,
+      "tokens": 31614
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 1.0, "stddev": 0.0},
+      "time_seconds": {"mean": 363.8, "stddev": 16.2},
+      "tokens": {"mean": 34233, "stddev": 964}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 1.0, "stddev": 0.0},
+      "time_seconds": {"mean": 417.1, "stddev": 51.7},
+      "tokens": {"mean": 28413, "stddev": 2831}
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "-53.3",
+      "tokens": "+5820"
+    }
+  },
+  "notes": [
+    "All assertions pass for both configurations — the assertions are non-discriminating at this threshold.",
+    "With-skill runs are ~53s faster on average but use ~5800 more tokens (more detailed output).",
+    "Qualitative comparison is needed to assess the real value of the skill — depth of FLOSS/CNCF coverage, classified systems knowledge, and Cisco ACI specifics."
+  ]
+}

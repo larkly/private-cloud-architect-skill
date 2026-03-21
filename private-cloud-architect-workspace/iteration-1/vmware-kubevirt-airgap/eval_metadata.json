@@ -1,0 +1,17 @@
+{
+  "eval_id": 1,
+  "eval_name": "vmware-kubevirt-airgap",
+  "prompt": "I'm working on a DoD contract and we need to migrate about 200 VMs from our current VMware vSphere 7 environment to something that doesn't require VMware licensing (Broadcom situation is killing us). The environment is IL5 rated, completely air-gapped, no internet access whatsoever. We're thinking KubeVirt on RKE2 Government but open to other ideas. Need to maintain our ATO. What's the migration plan and target architecture look like?",
+  "assertions": [
+    {"name": "kubevirt_or_alternative", "description": "Recommends KubeVirt on RKE2 Gov or explains alternative platform choice with rationale", "type": "content_check"},
+    {"name": "air_gap_strategy", "description": "Addresses air-gapped deployment in detail (disconnected registries, offline packages, media transfer)", "type": "content_check"},
+    {"name": "il5_compliance", "description": "Addresses IL5 requirements and what that means architecturally (NIST 800-53, DISA STIGs)", "type": "content_check"},
+    {"name": "ato_continuity", "description": "Discusses ATO maintenance or RMF process during migration", "type": "content_check"},
+    {"name": "migration_phases", "description": "Provides phased migration plan (not just target state)", "type": "content_check"},
+    {"name": "vm_conversion_tooling", "description": "Mentions specific tools or methods for converting VMware VMs to KubeVirt format", "type": "content_check"},
+    {"name": "stig_hardening", "description": "Mentions STIG hardening for the target platform", "type": "content_check"},
+    {"name": "disconnected_registry", "description": "Covers container registry strategy for air-gapped environment (Harbor, Iron Bank, etc.)", "type": "content_check"},
+    {"name": "storage_strategy", "description": "Covers storage for KubeVirt VMs (Ceph/Rook, Longhorn, or similar)", "type": "content_check"},
+    {"name": "rollback_plan", "description": "Includes rollback or risk mitigation strategy", "type": "content_check"}
+  ]
+}

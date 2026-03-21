@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "sensitivity_boundary_design",
+      "passed": true,
+      "evidence": "Section 3.5 details a Sanitization Gateway (DMZ) with DLP engine, API gateway, data diode, and logging. Section 3.2 defines four zones (BEGRENSET Core, Sanitization DMZ, Transit, AWS Workload VPC) with clear classification boundaries."
+    },
+    {
+      "text": "data_stays_onprem(BEGRENSET never reaches AWS)",
+      "passed": true,
+      "evidence": "Section 2.3 states 'BEGRENSET data must never enter AWS.' BGP prefix filtering ensures BEGRENSET subnets are never advertised. DLP scanning blocks BEGRENSET-marked payloads. Pattern C (Section 4.3) shows blocked egress flow."
+    },
+    {
+      "text": "approved_vpn_encryption(IPsec or NSM-approved)",
+      "passed": true,
+      "evidence": "Section 3.3 specifies 'IPsec overlay for defense-in-depth' over DX plus MACsec. Section 5.1 lists IPsec and MACsec. Section 5.3 confirms IPsec with pre-shared keys rotated quarterly."
+    },
+    {
+      "text": "exchange_zone",
+      "passed": true,
+      "evidence": "Zone 2 (Sanitization DMZ, 10.200.0.0/24) serves as the exchange zone between BEGRENSET and UGRADERT domains. Section 3.5 details its components including DLP, API gateway, data diode, and logging."
+    },
+    {
+      "text": "api_gateway_boundary",
+      "passed": true,
+      "evidence": "Section 3.5 item 2 describes an API Gateway/Reverse Proxy with allowlisted API calls, request/response inspection, mTLS termination, and schema validation. Kong/Envoy mentioned in K8s sanitization namespace."
+    },
+    {
+      "text": "aws_service_specifics(S3,SageMaker,VPC endpoints)",
+      "passed": true,
+      "evidence": "Section 3.4 specifies S3 Gateway VPC Endpoint, SageMaker Interface VPC Endpoint, plus endpoints for STS/KMS/CW. Section 5.5 shows S3 bucket policy restricted to VPC endpoint. SageMaker runs in VPC-mode with no internet."
+    },
+    {
+      "text": "sikkerhetsloven_compliance",
+      "passed": true,
+      "evidence": "Section 2.1 references Sikkerhetsloven Sections 6-1 through 6-5. Section 8 maps requirements to implementations. Section 11 confirms alignment with Sikkerhetsloven."
+    },
+    {
+      "text": "unified_monitoring(Prometheus,CloudWatch,dashboards)",
+      "passed": true,
+      "evidence": "Section 7.2 lists Prometheus+Thanos for metrics. Section 7.3 details CloudWatch Logs forwarding to on-prem. Section 7.4 defines unified Grafana dashboards with specific panel layouts."
+    },
+    {
+      "text": "traffic_flow_visibility(flow logs,anomaly detection)",
+      "passed": true,
+      "evidence": "Section 7.3 specifies VPC Flow Logs on all subnets including rejected traffic. Section 7.4 Row 2 shows traffic flow analysis panels. Row 3 includes anomaly score (ML-based baseline deviation). Section 7.5 has alerts for unusual data volume."
+    },
+    {
+      "text": "incident_isolation(cut cloud from on-prem)",
+      "passed": true,
+      "evidence": "Section 7.5 specifies 'Auto-shutdown DX interface' on BGP prefix leak. DLP blocks trigger immediate SOC response and source pod blocking. However, no explicit manual kill-switch or runbook for full DX isolation is detailed beyond the auto-shutdown alert."
+    },
+    {
+      "text": "eu_north_data_residency(Stockholm=Sweden not Norway)",
+      "passed": false,
+      "evidence": "Section 8 states 'AWS restricted to eu-north-1 (Stockholm) for UGRADERT only' and SCPs lock to eu-north-1. However, the document does NOT acknowledge that Stockholm is in Sweden (not Norway), nor does it discuss the jurisdictional implications of using a Swedish data center for a Norwegian defense contractor. It conflates 'data sovereignty' with region-locking without addressing that eu-north-1 is outside Norwegian jurisdiction."
+    },
+    {
+      "text": "nsm_grunnprinsipper_applied(four categories)",
+      "passed": false,
+      "evidence": "Section 2.2 mentions NSM Grunnprinsipper for IKT-sikkerhet and names 'defense-in-depth, least privilege, and network segmentation.' Section 8 maps some principles. However, the four categories of Grunnprinsippene (Identify, Protect, Detect, Respond) are never explicitly enumerated or systematically mapped. The document applies individual principles but does not structure its controls around the four-category framework."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "mentions_openstack",
+      "passed": true,
+      "evidence": "OpenStack is the core IaaS platform. Document explicitly recommends 'OpenStack (Caracal/2024.1+)' with rationale: 'Mature, vendor-neutral, strong financial services adoption'. Detailed coverage of Nova, Neutron, Keystone, Glance, Cinder, and other OpenStack services."
+    },
+    {
+      "text": "cisco_aci_integration",
+      "passed": true,
+      "evidence": "Section 4 covers ACI fabric design in depth: leaf-spine topology with Nexus 9500 spines and 9300 leaves, 3x APIC controllers, EPGs (PCI-Web, PCI-App, PCI-DB, Monitoring, etc.), contracts with explicit allow/deny rules, ACI Neutron plugin (apic_aim mechanism driver), VXLAN overlay, and L4-L7 service graphs."
+    },
+    {
+      "text": "ceph_storage_design",
+      "passed": true,
+      "evidence": "Section 6 provides detailed Ceph architecture: 8 OSD nodes with 96 OSDs total, 3 MON/MGR nodes, pool layout (vms, volumes, volumes-ssd with 3x replication; backups and rgw-data with EC 4+2), CRUSH rules for rack-level failure domains, separate public/cluster networks, and LUKS encryption at rest."
+    },
+    {
+      "text": "pci_dss_compliance",
+      "passed": true,
+      "evidence": "Section 10.1 maps all 12 PCI-DSS v4.0 requirements to specific implementations. CDE is isolated in a dedicated ACI tenant/VRF with inline firewall. Dedicated pci-compliant compute host aggregate. Segmentation verification scripts. AIDE for file integrity (req 11.5). 1-year log retention (req 10.7). MFA for admin access (req 8.3)."
+    },
+    {
+      "text": "soc2_compliance",
+      "passed": true,
+      "evidence": "Section 10.2 covers SOC 2 Type II alignment with specific trust service criteria: Security (CC6), Availability (A1), Processing Integrity (PI1), Confidentiality (C1), and Privacy, each mapped to concrete implementations. SOC 2 audit cost included in BOM at $30,000-50,000/yr."
+    },
+    {
+      "text": "identity_management",
+      "passed": true,
+      "evidence": "Section 7 details a full identity stack: FreeIPA (2 replicas) for LDAP/Kerberos/CA, Keycloak (2 HA instances) for OIDC/SAML with MFA (TOTP), OpenStack Keystone with LDAP backend, and HashiCorp Vault for secrets/PKI. RBAC model defined with specific roles. Vault-signed short-lived SSH certificates."
+    },
+    {
+      "text": "monitoring_stack",
+      "passed": true,
+      "evidence": "Section 8 specifies Prometheus (2x HA) + Grafana (2x HA) + Loki (3 nodes) + Alertmanager (2x). Multiple exporters: node_exporter, ceph_exporter, openstack-exporter, snmp_exporter, blackbox_exporter, haproxy_exporter, libvirt_exporter. Detailed alerting rules, dashboards, and log retention policies."
+    },
+    {
+      "text": "automation_strategy",
+      "passed": true,
+      "evidence": "Section 9 covers Ansible + Terraform + ArgoCD toolchain. Kolla-Ansible for OpenStack deployment, cephadm for Ceph. GitOps workflow with CI/CD pipeline (lint, dry-run, security scan, policy check). Detailed repo structure and key automation playbooks for patching, upgrades, compliance scanning, and certificate rotation."
+    },
+    {
+      "text": "team_size_appropriate",
+      "passed": true,
+      "evidence": "Architecture explicitly targets a 6-person ops team throughout. Section 12.4 defines role specialization with primary/backup for each domain. On-call rotation designed for 6 people (weekly, 6-week cycle). Automation-heavy approach (GitOps, IaC) reduces manual burden. Cross-training emphasized."
+    },
+    {
+      "text": "compute_sizing",
+      "passed": true,
+      "evidence": "Section 3.3 specifies 16 compute nodes with 2x Xeon Gold 6448Y (64 cores), 1 TB RAM each. Capacity math: 16 TB total RAM at 1.5:1 overcommit = ~750 VM capacity for 500 VM target. Section 13.1 shows detailed utilization: 4,096 vCPUs at 4:1 ratio, 49% utilization at day-1 target. CPU allocation ratio 4.0, RAM 1.5:1."
+    }
+  ]
+}

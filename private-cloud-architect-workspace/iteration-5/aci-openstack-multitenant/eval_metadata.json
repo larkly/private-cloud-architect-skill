@@ -1,0 +1,19 @@
+{
+  "eval_id": 9,
+  "eval_name": "aci-openstack-multitenant",
+  "prompt": "We're deploying OpenStack on a Cisco ACI fabric (Nexus 9000 spine-leaf, 3x APIC cluster) for a multi-tenant private cloud serving 5 internal business units. Each BU needs network isolation but some shared services (DNS, LDAP, monitoring) must be accessible from all tenants. We need load balancing for web workloads (considering F5 BIG-IP VE vs HAProxy via Octavia) and a Palo Alto VM-Series for north-south firewall between the internet and our DMZ. Design the ACI object model (tenants, VRFs, BDs, EPGs, contracts), the OpenStack-ACI integration, and how traffic flows through the Palo Alto and load balancer using ACI Service Graphs. Include the automation approach.",
+  "assertions": [
+    {"name": "aci_object_model", "description": "Designs specific ACI objects: Tenants, VRFs, Bridge Domains, EPGs with naming and hierarchy", "type": "content_check"},
+    {"name": "epg_contract_design", "description": "Defines specific Contracts between EPGs with Filters (not just 'use contracts' — shows which EPGs connect to which and what traffic is allowed)", "type": "content_check"},
+    {"name": "openstack_aci_mapping", "description": "Explains how OpenStack networks/routers/security groups map to ACI EPGs/Contracts (ML2 driver, OpFlex)", "type": "content_check"},
+    {"name": "service_graph_firewall", "description": "Uses ACI Service Graph for Palo Alto insertion (PBR, device package, redirect policy)", "type": "content_check"},
+    {"name": "service_graph_loadbalancer", "description": "Uses ACI Service Graph or Octavia for load balancer insertion with design rationale", "type": "content_check"},
+    {"name": "lb_comparison", "description": "Compares F5 BIG-IP VE vs HAProxy/Octavia with specific pros/cons for this scenario", "type": "content_check"},
+    {"name": "shared_services_design", "description": "Designs shared services (DNS, LDAP, monitoring) accessible from all tenants via ACI constructs (shared L3Out, vzAny, or shared services VRF)", "type": "content_check"},
+    {"name": "tenant_isolation", "description": "Ensures network isolation between the 5 BU tenants (separate VRFs or strict contract enforcement)", "type": "content_check"},
+    {"name": "traffic_flow_paloalto", "description": "Shows the traffic flow path through Palo Alto for north-south traffic (internet → PA → DMZ EPG → backend)", "type": "content_check"},
+    {"name": "automation_approach", "description": "Covers automation for ACI+OpenStack (Ansible cisco.aci, Terraform, AS3, or similar with specific examples)", "type": "content_check"},
+    {"name": "l3out_design", "description": "Designs L3Out for external connectivity (BGP/OSPF peering, external EPGs)", "type": "content_check"},
+    {"name": "paloalto_policy_design", "description": "Designs Palo Alto security policies with App-ID and zone-based rules (not just 'deploy a firewall')", "type": "content_check"}
+  ]
+}

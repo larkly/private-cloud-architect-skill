@@ -1,0 +1,26 @@
+{
+  "skill_name": "private-cloud-architect",
+  "evals": [
+    {
+      "id": 0,
+      "name": "openstack-aci-finserv",
+      "prompt": "We're a mid-size financial services company (around 500 employees) and we've decided to build our own private cloud instead of continuing to pay AWS bills that keep climbing. We need to support about 500 VMs, we've already bought Cisco Nexus 9000 switches and want to use ACI, and our storage team is leaning toward Ceph. We need to stay compliant with PCI-DSS and SOC2. Can you design the architecture for this? Include networking, storage, compute, identity, monitoring, and automation. We have a small but competent ops team of 6 people.",
+      "expected_output": "A comprehensive private cloud architecture document covering OpenStack platform design, Cisco ACI fabric integration, Ceph storage architecture, PCI-DSS/SOC2 compliance approach, monitoring stack, and automation strategy sized for a 6-person ops team.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "vmware-kubevirt-airgap",
+      "prompt": "I'm working on a DoD contract and we need to migrate about 200 VMs from our current VMware vSphere 7 environment to something that doesn't require VMware licensing (Broadcom situation is killing us). The environment is IL5 rated, completely air-gapped, no internet access whatsoever. We're thinking KubeVirt on RKE2 Government but open to other ideas. Need to maintain our ATO. What's the migration plan and target architecture look like?",
+      "expected_output": "A migration plan from VMware to KubeVirt/RKE2 Gov in an air-gapped IL5 environment, covering target architecture, migration tooling for disconnected environments, ATO/RMF compliance continuity, STIG hardening, disconnected registry/package management, and phased migration approach.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "hybrid-nutanix-aws",
+      "prompt": "Our main data center runs Nutanix (about 80 nodes, mix of NX and Dell XC) and we're happy with it for steady-state workloads. But we're an e-commerce company and during Black Friday / holiday season our traffic goes 10x for about 6 weeks. We've been over-provisioning hardware that sits idle 10 months a year. We want to burst to AWS during peak but we're in healthcare e-commerce so HIPAA compliance is non-negotiable. How do we architect this hybrid setup? We use Ansible heavily and are starting to adopt Kubernetes.",
+      "expected_output": "A hybrid architecture design with Nutanix on-prem as steady-state and AWS burst capacity, covering hybrid networking, HIPAA compliance across both environments, Kubernetes strategy spanning on-prem and cloud, Ansible automation for hybrid provisioning, cost analysis of burst vs over-provision, and data sovereignty considerations.",
+      "files": []
+    }
+  ]
+}

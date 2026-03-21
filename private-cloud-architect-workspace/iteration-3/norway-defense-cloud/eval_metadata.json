@@ -1,0 +1,19 @@
+{
+  "eval_id": 6,
+  "eval_name": "norway-defense-cloud",
+  "prompt": "We're a Norwegian defense company working on a contract for Forsvaret (Norwegian Armed Forces). We need to build a private cloud platform for processing HEMMELIG (Secret) classified data. The system must comply with Sikkerhetsloven and be accredited by NSM. We're considering OpenStack or Kubernetes-based approaches. The platform must be fully air-gapped, all data stays in Norway, and we need to ensure NATO interoperability since some of the data will be shared with NATO partners. Our team is 20 people but only 8 hold the required klarering for HEMMELIG. How should we architect this?",
+  "assertions": [
+    {"name": "norwegian_classification_levels", "description": "Correctly names Norwegian classification levels (UGRADERT, BEGRENSET, KONFIDENSIELT, HEMMELIG, STRENGT HEMMELIG)", "type": "content_check"},
+    {"name": "sikkerhetsloven", "description": "References Sikkerhetsloven (Norwegian Security Act) as the governing framework, not just generic standards", "type": "content_check"},
+    {"name": "nsm_authority", "description": "Identifies NSM (Nasjonal Sikkerhetsmyndighet) as the accreditation and oversight authority with specific role description", "type": "content_check"},
+    {"name": "nsm_grunnprinsipper", "description": "References NSM Grunnprinsipper for IKT-sikkerhet as the primary ICT security/hardening baseline (not STIGs or CIS as primary)", "type": "content_check"},
+    {"name": "nsm_approved_crypto", "description": "Specifies that NSM-approved cryptographic products are required, not just FIPS or generic TLS", "type": "content_check"},
+    {"name": "klarering_process", "description": "Addresses the klarering (security clearance) process and how the 8-person cleared team constraint affects operations", "type": "content_check"},
+    {"name": "nato_interoperability", "description": "Addresses NATO interoperability requirements for data sharing with NATO partners, including NATO-approved crypto and classification marking", "type": "content_check"},
+    {"name": "cross_domain_solutions", "description": "Explicitly addresses cross-domain solutions for moving data between classification levels and between national and NATO systems (data diodes, CDS, guards)", "type": "content_check"},
+    {"name": "tempest_requirements", "description": "Addresses TEMPEST/emanation security for HEMMELIG processing", "type": "content_check"},
+    {"name": "data_sovereignty_norway", "description": "Explicitly addresses that data must remain in Norway, not just 'on-premises'", "type": "content_check"},
+    {"name": "eu_eea_context", "description": "Places Norwegian requirements in EEA/EU context (NIS2 applicability via EEA, GDPR via EEA)", "type": "content_check"},
+    {"name": "no_us_centric_assumptions", "description": "Does NOT default to US frameworks (STIGs, FIPS, FedRAMP) as primary — Norwegian standards (NSM Grunnprinsipper, Sikkerhetsloven) are the primary reference", "type": "content_check"}
+  ]
+}

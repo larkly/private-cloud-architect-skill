@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "nato_classification_correct",
+      "passed": true,
+      "evidence": "Section 2.1 lists full hierarchy: NATO UNCLASSIFIED, NATO RESTRICTED, NATO CONFIDENTIAL, NATO SECRET, COSMIC TOP SECRET with abbreviations and infrastructure implications."
+    },
+    {
+      "text": "nsm_norway_authority",
+      "passed": true,
+      "evidence": "Section 2.3 identifies NSM (Nasjonal Sikkerhetsmyndighet) as Norway's governing authority with Sikkerhetsloven (2018) and NSM Grunnprinsipper for IKT-sikkerhet."
+    },
+    {
+      "text": "bsi_germany_authority",
+      "passed": true,
+      "evidence": "Section 2.3 identifies BSI (Bundesamt fur Sicherheit in der Informationstechnik) as Germany's authority with BSI IT-Grundschutz and BSI C5."
+    },
+    {
+      "text": "cfcs_denmark_authority",
+      "passed": true,
+      "evidence": "Section 2.3 identifies CFCS (Center for Cybersikkerhed) as Denmark's authority with Danish Security Act and CFCS guidelines."
+    },
+    {
+      "text": "national_enclave_separation",
+      "passed": true,
+      "evidence": "Section 4.2 shows physically separate enclaves (Norwegian, Danish, German) with independent rack space, power, switches, management planes, and no direct cabling between enclaves."
+    },
+    {
+      "text": "nato_crypto_requirement",
+      "passed": true,
+      "evidence": "Section 7.1 explicitly states NATO SECRET data requires NATO-approved cryptographic products only, and national crypto products are NOT acceptable for NATO-classified data."
+    },
+    {
+      "text": "cross_domain_between_enclaves",
+      "passed": true,
+      "evidence": "Sections 5.2 and ADR-003 detail accredited cross-domain solutions (CDS) as the only mechanism for inter-enclave data transfer, with content inspection, hardware data diodes, and transfer approval workflows."
+    },
+    {
+      "text": "bilateral_security_agreements",
+      "passed": true,
+      "evidence": "Section 3.1 requires a bilateral/multilateral security agreement (Programme Security Instruction or PSI) covering data processing permissions, cross-domain rules, incident response, and clearance mutual recognition."
+    },
+    {
+      "text": "personnel_clearance_multinational",
+      "passed": true,
+      "evidence": "Section 4.1 requires appropriate national clearances AND NATO SECRET clearance; Section 8.2 details per-enclave clearance requirements; Section 3.1 mentions clearance mutual recognition arrangements."
+    },
+    {
+      "text": "red_black_separation",
+      "passed": true,
+      "evidence": "Section 4.1 states red/black separation enforced for all cabling; Section 5.3 reiterates classified (red) and unclassified (black) signals never share conductors, conduits, or equipment."
+    },
+    {
+      "text": "ncia_accreditation",
+      "passed": true,
+      "evidence": "Section 3.1 states NCIA is responsible for accreditation of NATO CIS systems and the NATO common enclave must be accredited for NS processing. Section 5.2 confirms NCIA accredits any CDS touching the NATO common area."
+    },
+    {
+      "text": "physical_security_facility",
+      "passed": true,
+      "evidence": "Section 4.1 details physical security including security-graded areas at HEMMELIG level, TEMPEST SDIP-27 compliance, Faraday cages, multi-factor physical access control, access logs, and escort procedures."
+    }
+  ]
+}

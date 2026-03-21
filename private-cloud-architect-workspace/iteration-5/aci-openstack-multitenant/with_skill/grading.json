@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "aci_object_model(specific Tenants,VRFs,BDs,EPGs with naming)",
+      "passed": true,
+      "evidence": "Defines tn-bu1..tn-bu5, tn-shared-services, tn-dmz, tn-mgmt tenants; vrf-bu1..vrf-bu5, vrf-shared, vrf-dmz, vrf-mgmt VRFs; bd-bu1-web/app/db/internal BDs with subnets; epg-bu1-web/app/db/internal EPGs under ap-bu1-workloads. All with consistent naming conventions."
+    },
+    {
+      "text": "epg_contract_design(specific Contracts between specific EPGs with Filters)",
+      "passed": true,
+      "evidence": "Defines specific filters (flt-dns TCP/UDP 53, flt-http TCP 80/443, flt-db-pgsql TCP 5432, etc.) and contracts (ctr-bu1-web-to-app with flt-app-tcp, ctr-bu1-app-to-db with flt-db-pgsql, ctr-internet-to-dmz with flt-http) with named provider/consumer EPGs and direction."
+    },
+    {
+      "text": "openstack_aci_mapping(ML2 driver,OpFlex,networks→EPGs)",
+      "passed": true,
+      "evidence": "Section 3 details ACI Neutron ML2 mechanism driver in managed mode, OpFlex agent on compute nodes with OVS, and explicit mapping table: Neutron Network→EPG, Neutron Subnet→BD Subnet, Neutron Port→ACI Endpoint. Includes network creation flow showing ML2 driver creating EPGs via APIC REST API."
+    },
+    {
+      "text": "service_graph_firewall(PBR,device package for PA)",
+      "passed": true,
+      "evidence": "Section 4 defines sg-palo-alto-perimeter service graph with GoTo function, PBR redirect policies (pbr-pa-consumer to 10.200.1.10, pbr-pa-provider to 10.200.2.10), ldev-paloalto-vseries logical device in managed mode with device package, health group monitoring."
+    },
+    {
+      "text": "service_graph_loadbalancer(ACI SG or Octavia for LB)",
+      "passed": true,
+      "evidence": "Section 5 defines ldev-f5-bigip as ACI service graph node (Node N2 in sg-perimeter-fw-lb chained with PA), plus HAProxy via Octavia as alternative. Includes concrete device details, PBR routing, and Octavia CLI examples for internal LB."
+    },
+    {
+      "text": "lb_comparison(F5 vs HAProxy/Octavia pros/cons)",
+      "passed": true,
+      "evidence": "Section 5.1 provides detailed comparison table: F5 has native ACI device package, route domains, iRules, WAF but significant cost; HAProxy/Octavia is free, well-tested but no ACI SG integration, no native WAF, separate amphora VMs. Recommends hybrid approach."
+    },
+    {
+      "text": "shared_services_design(vzAny,shared L3Out,or shared VRF for DNS/LDAP/monitoring)",
+      "passed": true,
+      "evidence": "Section 6 details inter-tenant contracts (ctr-shared-dns, ctr-shared-ldap, ctr-shared-monitoring, ctr-shared-ntp) exported from tn-shared-services and consumed via vzAny on each BU VRF. Shows explicit vzAny configuration block and step-by-step implementation with contract interfaces and global scope."
+    },
+    {
+      "text": "tenant_isolation(separate VRFs or strict contracts)",
+      "passed": true,
+      "evidence": "Each BU gets its own VRF (vrf-bu1..vrf-bu5) with pc_enf_pref=enforced (whitelist model). Document states 'traffic between EPGs within the same VRF requires an explicit Contract' and calls this 'the foundation of the zero-trust posture'. Preferred Group disabled on all VRFs."
+    },
+    {
+      "text": "traffic_flow_paloalto(internet→PA→DMZ→backend path)",
+      "passed": true,
+      "evidence": "Section 4.4 provides 10-step traffic flow: client→border router→L3Out→External EPG→contract match→PBR to PA untrust (10.200.1.10)→SSL decrypt→App-ID→Content-ID→PA trust (10.200.2.10)→epg-dmz-frontend. Section 5.4 extends full path through F5 to BU1 web server."
+    },
+    {
+      "text": "automation_approach(Ansible cisco.aci,Terraform,AS3)",
+      "passed": true,
+      "evidence": "Section 8 specifies OpenTofu with cisco/aci provider for ACI fabric, Ansible with paloaltonetworks.panos for PA and f5networks.f5_modules+AS3 for F5, plus CI/CD pipeline. Includes HCL code for aci_tenant/aci_vrf/aci_bridge_domain resources and AS3 declaration files. Uses OpenTofu (Terraform fork) rather than Terraform directly but covers same tooling."
+    },
+    {
+      "text": "l3out_design(BGP/OSPF,external EPGs)",
+      "passed": true,
+      "evidence": "Section 2.6 defines three L3Outs: l3out-internet (BGP to border routers in tn-dmz), l3out-wan (OSPF to WAN routers in tn-mgmt), l3out-shared-transit (static to core routers). States each L3Out has associated External EPG (l3extInstP) for contract-based policy. extepg-internet shown as consumer of ctr-internet-to-dmz."
+    },
+    {
+      "text": "paloalto_policy_design(App-ID,zones,specific rules)",
+      "passed": true,
+      "evidence": "Section 4.3 defines zones (untrust, trust, management), specific security rules with App-ID (ssl, web-browsing, apt, yum), security profiles (AV, Anti-Spyware, Vuln Protection, URL Filtering, WildFire), SSL decryption policy, and Dynamic Address Groups pulling from APIC. Rules include Allow-Inbound-HTTPS, Block-All-Inbound, Allow-DMZ-Outbound-Updates, Block-All-Outbound."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "We're moving off VMware after the Broadcom acquisition and need to figure out what to replace vSphere with for our 300 VMs. Considering Proxmox, OpenStack, or maybe KubeVirt on bare metal. We run Cisco Nexus switches and want to keep our ACI fabric.",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to design a private cloud for our Norwegian defense contractor that processes HEMMELIG data. Must comply with Sikkerhetsloven and get NSM accreditation. Air-gapped, Kubernetes-based.",
+    "should_trigger": true
+  },
+  {
+    "query": "We have F5 BIG-IP load balancers in front of our OpenStack tenant VMs and need to insert them into our ACI fabric using Service Graphs. Can you walk me through the ACI object model for this?",
+    "should_trigger": true
+  },
+  {
+    "query": "Our German government agency needs a VS-NfD compliant private cloud with BSI IT-Grundschutz certification. We want to use as much open source as possible but need to know where BSI-approved products are mandatory.",
+    "should_trigger": true
+  },
+  {
+    "query": "i need to set up a hybrid architecture where our on-prem nutanix cluster can burst to AWS during peak season. we're a healthcare company so HIPAA is non-negotiable. we use ansible for everything",
+    "should_trigger": true
+  },
+  {
+    "query": "We're building a NATO SECRET shared infrastructure for a multinational project with Norway, Denmark and Germany. Need to handle both NATO-classified and nationally-classified data with proper enclave separation.",
+    "should_trigger": true
+  },
+  {
+    "query": "my boss wants me to evaluate whether we should replace our Citrix NetScaler VPX instances with HAProxy or F5 BIG-IP. we run openstack with cisco aci and need to keep the service graph integration working. about 30 virtual servers across 4 pairs",
+    "should_trigger": true
+  },
+  {
+    "query": "Need to design the DMZ for our private cloud. Palo Alto PA-5400 pair for the perimeter firewall, need SSL decryption before traffic hits the load balancers. Everything runs on ACI. How do I chain the service graphs?",
+    "should_trigger": true
+  },
+  {
+    "query": "We want to deploy Ceph storage for our OpenStack private cloud. About 500TB usable, mix of NVMe and SSD tiers. Need to figure out pool layout, replication vs erasure coding, and how to integrate with Cinder and Glance.",
+    "should_trigger": true
+  },
+  {
+    "query": "Swedish defense contractor here. Building a classified cloud platform for HEMLIG data, need to comply with Säkerhetsskyddslagen. Only 12 of our 40 engineers have Säpo clearances. What's the architecture?",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you write a Python script that reads a CSV file and outputs a bar chart using matplotlib?",
+    "should_trigger": false
+  },
+  {
+    "query": "I'm trying to fix a segfault in my C++ program. Here's the backtrace from gdb, can you help me figure out what's going wrong with my pointer arithmetic?",
+    "should_trigger": false
+  },
+  {
+    "query": "We need to set up a CI/CD pipeline with GitHub Actions for our React frontend app. It should run tests, build, and deploy to Vercel on merge to main.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I configure an AWS Lambda function to process S3 events and write results to DynamoDB? I'm using the Serverless Framework with TypeScript.",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to deploy a PostgreSQL database on my Kubernetes cluster using the CloudNativePG operator. Can you help me write the YAML manifest with HA and backups to S3?",
+    "should_trigger": false
+  },
+  {
+    "query": "We're migrating our monolith Rails app to microservices. Can you help me design the API boundaries and figure out which services to extract first? We have about 200 models.",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to set up monitoring for our SaaS application running on AWS ECS. We want to use Datadog for metrics, logs, and APM traces. How should we instrument our Node.js services?",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you help me write a Terraform module to deploy a three-tier web application on AWS with an ALB, ECS Fargate services, and Aurora PostgreSQL?",
+    "should_trigger": false
+  },
+  {
+    "query": "I'm building a mobile app with React Native and need to implement push notifications using Firebase Cloud Messaging. Can you walk me through the setup for both iOS and Android?",
+    "should_trigger": false
+  },
+  {
+    "query": "We need to set up Grafana dashboards for our Prometheus metrics. The application is a REST API running on Kubernetes and I want to track request latency, error rates, and pod resource usage.",
+    "should_trigger": false
+  }
+]

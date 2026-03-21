@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "kubevirt_or_alternative",
+      "passed": true,
+      "evidence": "Recommends 'KubeVirt on RKE2 Government' with a detailed alternatives comparison table (Proxmox, OpenStack, Nutanix AHV, Harvester) including pros, cons, and verdicts. ADR-001 provides full rationale."
+    },
+    {
+      "text": "air_gap_strategy",
+      "passed": true,
+      "evidence": "Section 8 'Air-Gapped Operations Model' covers artifact transfer process with encrypted USB/data diode, disconnected registry (Harbor), disconnected RPM repos (Satellite/Pulp), offline Kubernetes operations (RKE2 air-gap bundles, offline Helm charts), and patch management cadence."
+    },
+    {
+      "text": "il5_compliance",
+      "passed": true,
+      "evidence": "Section 7.1 maps IL5 security controls to implementations across NIST 800-53 control families (AC, AU, CM, IA, IR, SC, SI) and mandates FIPS 140-2 cryptography. Section 7.4 details encryption architecture for data at rest and in transit with FIPS compliance."
+    },
+    {
+      "text": "ato_continuity",
+      "passed": true,
+      "evidence": "Section 10 'ATO Maintenance Plan' covers security impact analysis, modified ATO process, RMF artifacts to update (SSP, SCA, POA&M, PPS, etc.), STIG mapping from VMware to K8s equivalents, and a continuous authorization (cATO) path."
+    },
+    {
+      "text": "migration_phases",
+      "passed": true,
+      "evidence": "Section 9.1 defines 5 migration waves (Wave 0 pilot through Wave 4) over 16-20 weeks with specific VM counts, categories, risk levels, and durations. Section 9.2 details per-VM migration phases (Assessment, Preparation, Execution, Validation & Cutover)."
+    },
+    {
+      "text": "vm_conversion_tooling",
+      "passed": true,
+      "evidence": "Section 9.5 lists specific tools: qemu-img for VMDK-to-qcow2 conversion, ovftool for vSphere export, CDI (Containerized Data Importer) for importing into PVCs, virtctl for image upload. Section 6.4 shows the conversion pipeline: VMDK -> qcow2 -> KubeVirt CDI import."
+    },
+    {
+      "text": "stig_hardening",
+      "passed": true,
+      "evidence": "Section 7.2 details STIG compliance for RHEL OS (DISA RHEL STIG via OpenSCAP + Ansible), Kubernetes (DISA Kubernetes STIG, RKE2 CIS-hardened), container images (DISA Container STIG, Iron Bank), and Windows VMs (DISA Windows Server STIG). Section 10.3 maps VMware STIGs to KubeVirt/K8s equivalents."
+    },
+    {
+      "text": "disconnected_registry",
+      "passed": true,
+      "evidence": "Section 8.2 covers Harbor as the disconnected registry with Iron Bank image mirroring via transfer media, Helm chart storage, offline Trivy DB updates, and inter-cluster replication. Kyverno policy in Section 7.5 enforces all images originate from local Harbor."
+    },
+    {
+      "text": "storage_strategy",
+      "passed": true,
+      "evidence": "Section 6 covers Rook-Ceph with RBD (replicated and erasure-coded pools) for VM disks, CephFS for shared filesystems, RGW for object storage. Includes storage classes with YAML examples, sizing tables, and NVMe vs SSD tiering."
+    },
+    {
+      "text": "rollback_plan",
+      "passed": true,
+      "evidence": "Section 9.6 'Rollback Strategy' states vSphere VMs are not decommissioned until 72 hours of successful production on KubeVirt, failed VMs revert to original vSphere VM, DNS/LB changes are easily reversible, and all manifests are in Git for clean rollback."
+    }
+  ]
+}

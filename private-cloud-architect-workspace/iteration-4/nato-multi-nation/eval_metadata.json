@@ -1,0 +1,19 @@
+{
+  "eval_id": 4,
+  "eval_name": "nato-multi-nation",
+  "prompt": "We're setting up a NATO SECRET-level shared infrastructure for a multinational defense project involving Norway, Denmark, and Germany. Each nation has different national security requirements but we need to process NATO SECRET data on a common platform. The infrastructure will be hosted in a LIST-X equivalent facility in Norway. We need to handle both NATO-classified and nationally-classified data from the three participating nations, with proper separation. How do we architect this considering the different national frameworks, NATO requirements, and the need for cross-domain data sharing between national enclaves?",
+  "assertions": [
+    {"name": "nato_classification_correct", "description": "Correctly lists NATO classification levels (NATO RESTRICTED through COSMIC TOP SECRET)", "type": "content_check"},
+    {"name": "nsm_norway_authority", "description": "Identifies NSM (Nasjonal Sikkerhetsmyndighet) as Norway's national security authority", "type": "content_check"},
+    {"name": "bsi_germany_authority", "description": "Identifies BSI as Germany's relevant security authority for IT systems", "type": "content_check"},
+    {"name": "cfcs_denmark_authority", "description": "Identifies CFCS (Center for Cybersikkerhed) as Denmark's relevant authority", "type": "content_check"},
+    {"name": "national_enclave_separation", "description": "Designs separate enclaves for each nation's nationally-classified data, with NATO SECRET as the shared tier", "type": "content_check"},
+    {"name": "nato_crypto_requirement", "description": "Specifies that NATO-approved cryptographic products are required for NATO-classified data", "type": "content_check"},
+    {"name": "cross_domain_between_enclaves", "description": "Addresses controlled data flow between national enclaves and the NATO tier (guards, CDS, release procedures)", "type": "content_check"},
+    {"name": "bilateral_security_agreements", "description": "Mentions need for bilateral or multilateral security agreements between participating nations", "type": "content_check"},
+    {"name": "personnel_clearance_multinational", "description": "Addresses that personnel need both national clearance AND NATO clearance, and that access to another nation's data requires specific authorization", "type": "content_check"},
+    {"name": "red_black_separation", "description": "Addresses red/black separation or TEMPEST considerations for NATO SECRET processing", "type": "content_check"},
+    {"name": "ncia_accreditation", "description": "Mentions NCIA (NATO Communications and Information Agency) role in accreditation of NATO systems", "type": "content_check"},
+    {"name": "physical_security_facility", "description": "Addresses facility security requirements (LIST-X or equivalent, physical access controls, inspection requirements)", "type": "content_check"}
+  ]
+}

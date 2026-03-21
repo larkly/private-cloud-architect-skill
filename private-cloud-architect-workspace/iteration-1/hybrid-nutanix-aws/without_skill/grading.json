@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "nutanix_retained",
+      "passed": true,
+      "evidence": "Executive summary states 'Nutanix remains the primary platform for steady-state workloads (the \"home\" for all services)' and 'AWS serves as an elastic burst target, not a permanent second data center.' The design retains 45-50 Nutanix nodes as the steady-state platform."
+    },
+    {
+      "text": "aws_burst_architecture",
+      "passed": true,
+      "evidence": "Section 6.2 details EKS with Karpenter for node auto-provisioning, specific instance types (c6i.2xlarge/4xlarge), Spot vs On-Demand split (70/30), RDS read replicas, ElastiCache, MSK. Section 10 covers burst lifecycle phases and dynamic scaling triggers with specific thresholds."
+    },
+    {
+      "text": "hipaa_compliance",
+      "passed": true,
+      "evidence": "Section 8 is a full HIPAA Compliance Framework covering administrative, physical, and technical safeguards with specific controls. Includes PHI data flow audit table (PHI-001 through PHI-006), compliance monitoring tools (AWS Config Rules, Security Hub, CloudTrail), encryption requirements (TLS 1.2+, AES-256), and audit log retention (6+ years)."
+    },
+    {
+      "text": "hybrid_networking",
+      "passed": true,
+      "evidence": "Section 5.1 specifies dedicated AWS Direct Connect (2x 10Gbps, diverse paths, MACsec encryption) as primary connectivity with IPsec VPN as backup. Includes Transit Gateway topology, VPC design with subnet tiers, DNS architecture with Route 53, and security groups/NACLs."
+    },
+    {
+      "text": "kubernetes_strategy",
+      "passed": true,
+      "evidence": "Section 12 details a multi-cluster Kubernetes strategy: NKE on-prem (15-20 worker nodes) and EKS in AWS (5-200 nodes via Karpenter), with Istio multi-cluster service mesh for cross-cluster communication and mTLS. Includes GitOps with ArgoCD ApplicationSets for multi-cluster deployment."
+    },
+    {
+      "text": "ansible_integration",
+      "passed": true,
+      "evidence": "Section 11 is dedicated to Ansible Automation Architecture. Shows repository structure with inventories for on-prem, aws, and hybrid environments, environment abstraction via group_vars, burst lifecycle playbooks (burst-prepare.yml through burst-decommission.yml), and integration with Terraform for AWS resources. Uses amazon.aws and kubernetes.core collections."
+    },
+    {
+      "text": "cost_analysis",
+      "passed": true,
+      "evidence": "Section 16 provides detailed cost comparison: current state ~$2M/yr (80 nodes) vs target ~$1.5-1.6M/yr (45 nodes + AWS burst), yielding 18-25% annual savings and $1.4-2M over a 4-year refresh cycle. Includes AWS cost optimization strategies (Spot, Savings Plans, Karpenter right-sizing) and cost governance measures."
+    },
+    {
+      "text": "data_sovereignty",
+      "passed": true,
+      "evidence": "Section 7.1 classifies data by type and specifies where each lives. Primary databases with ePHI stay on-prem (Section 7.2: 'deliberate choice' for data gravity and compliance simplicity). Compliance documents explicitly 'NOT synced to AWS.' SCP blocks non-approved regions (only us-east-1 and us-west-2 allowed). Workload tiers (Section 2.3) define PHI exposure per tier."
+    },
+    {
+      "text": "baa_requirement",
+      "passed": true,
+      "evidence": "Section 8.1 states 'Execute a Business Associate Agreement (BAA) with AWS. This is available through AWS Artifact in the AWS Management Console and must be accepted before deploying any PHI workloads.' Also listed as requirement HIPAA-01 and in the executive summary: 'a signed AWS BAA.' Implementation roadmap lists 'Sign AWS BAA' as first task in Phase 0."
+    },
+    {
+      "text": "seasonal_scaling_plan",
+      "passed": true,
+      "evidence": "Section 10.1 defines a 5-phase burst lifecycle: PREPARE (Oct 1, ~4 weeks), WARM-UP (Nov 1, ~2 weeks with 5% canary traffic), BURST-ACTIVE (Nov 15-Dec 31, auto-scaling 30-70% to AWS), SCALE-DOWN (Jan 1-15, gradual shift back), DECOMMISSION (Jan 15-31, tear down AWS resources). Section 10.2 includes pre-scheduled scaling for Black Friday/Cyber Monday with specific replica multipliers."
+    }
+  ]
+}

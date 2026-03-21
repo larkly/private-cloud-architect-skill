@@ -1,0 +1,19 @@
+{
+  "eval_id": 8,
+  "eval_name": "hybrid-sensitive-network",
+  "prompt": "We're a Norwegian defense contractor with a BEGRENSET (restricted) private cloud on-prem running Kubernetes. We need to use some AWS services (S3 for large file storage, SageMaker for ML training on non-classified data) but our on-prem network handles BEGRENSET data that must stay in Norway. We have a Direct Connect link to AWS eu-north-1 (Stockholm). How do we architect the hybrid network so that AWS services can communicate with our on-prem APIs without exposing BEGRENSET data to AWS? We need to comply with Sikkerhetsloven and NSM guidelines. Also design the monitoring so we can see traffic flows across both environments.",
+  "assertions": [
+    {"name": "sensitivity_boundary_design", "description": "Designs a clear boundary between BEGRENSET on-prem and cloud, with data classification controls", "type": "content_check"},
+    {"name": "data_stays_onprem", "description": "Ensures BEGRENSET data stays on-prem, only non-classified data reaches AWS", "type": "content_check"},
+    {"name": "approved_vpn_encryption", "description": "Addresses encryption on the Direct Connect link (IPsec VPN overlay or NSM-approved encryption)", "type": "content_check"},
+    {"name": "exchange_zone", "description": "Creates an exchange/gateway zone between on-prem sensitive and cloud-connected networks", "type": "content_check"},
+    {"name": "api_gateway_boundary", "description": "Uses API gateway or reverse proxy at the boundary to control what data crosses", "type": "content_check"},
+    {"name": "aws_service_specifics", "description": "Addresses S3 and SageMaker integration specifically (VPC endpoints, IAM roles, encryption)", "type": "content_check"},
+    {"name": "sikkerhetsloven_compliance", "description": "References Sikkerhetsloven and NSM requirements for the hybrid architecture", "type": "content_check"},
+    {"name": "unified_monitoring", "description": "Designs monitoring spanning both environments (Prometheus, CloudWatch, unified dashboards)", "type": "content_check"},
+    {"name": "traffic_flow_visibility", "description": "Provides visibility into cross-boundary traffic (flow logs, network monitoring, anomaly detection)", "type": "content_check"},
+    {"name": "incident_isolation", "description": "Ability to isolate cloud from on-prem quickly in case of incident", "type": "content_check"},
+    {"name": "eu_north_data_residency", "description": "Addresses that eu-north-1 is in Stockholm (Sweden, not Norway) and implications for Norwegian data sovereignty", "type": "content_check"},
+    {"name": "nsm_grunnprinsipper_applied", "description": "Applies NSM Grunnprinsipper categories (identify, protect, detect, respond) to the hybrid architecture", "type": "content_check"}
+  ]
+}

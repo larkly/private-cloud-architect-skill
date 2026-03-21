@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "kubevirt_or_alternative",
+      "passed": true,
+      "evidence": "Recommends 'KubeVirt running on RKE2 Government (RKE2-Gov)' with detailed justification, alternatives considered table (OpenShift, Proxmox, Harvester, oVirt, Nutanix, libvirt), and rationale for each."
+    },
+    {
+      "text": "air_gap_strategy",
+      "passed": true,
+      "evidence": "Section 8 'Air-Gap Infrastructure' covers content pipeline architecture with data diode/sneakernet, transfer station, Harbor registry, Hauler for content management, RPM repository mirroring, skopeo for image transfer, and detailed content bundle table."
+    },
+    {
+      "text": "il5_compliance",
+      "passed": true,
+      "evidence": "Document addresses IL5 throughout. Section 7 covers FIPS 140-2/140-3 compliance at every layer, Section 11.3 maps NIST 800-53 Rev 5 control families with impact assessment, and DISA STIG application is detailed in Section 7.2."
+    },
+    {
+      "text": "ato_continuity",
+      "passed": true,
+      "evidence": "Section 11 'ATO Continuity Plan' covers Significant Change Request filing, SSP updates, POA&M creation, delta assessment approach, and detailed security documentation update table. Emphasizes 'Do NOT let the ATO lapse.'"
+    },
+    {
+      "text": "migration_phases",
+      "passed": true,
+      "evidence": "Section 10.1 defines 9 migration waves (Wave 0 pilot through Wave 8 cleanup). Section 15 provides 8 phases over 48 weeks with milestones, exit criteria, and a Gantt chart."
+    },
+    {
+      "text": "vm_conversion_tooling",
+      "passed": true,
+      "evidence": "Section 9.2 details VM disk conversion pipeline: CDI DataVolume import, virtctl image-upload for VMDK, qemu-img convert for VMDK to qcow2, and HTTP-based CDI import. Section 10.3 lists PowerCLI/govc, custom Python/Ansible, qemu-img, and virtctl."
+    },
+    {
+      "text": "stig_hardening",
+      "passed": true,
+      "evidence": "Section 7.2 covers DISA STIGs for RHEL, Kubernetes, Container Runtime, and guest OS. Section 7.3 provides RKE2 CIS hardening checklist with specific config.yaml settings. Section 11.4 details ongoing STIG compliance scanning with OpenSCAP, kube-bench, and inspec profiles."
+    },
+    {
+      "text": "disconnected_registry",
+      "passed": true,
+      "evidence": "Section 8.4 details Harbor as the authoritative container image registry inside the enclave with replication, vulnerability scanning (Trivy), content trust (Cosign), RBAC, and HA deployment. Iron Bank is not mentioned but Harbor with Hauler and skopeo is thoroughly covered."
+    },
+    {
+      "text": "storage_strategy",
+      "passed": true,
+      "evidence": "Section 6 covers storage architecture in depth: Rook-Ceph recommended for 200 VM environment, Longhorn as alternative, existing SAN as bridge strategy. Details CephBlockPool, CephFS, StorageClass definitions, and live migration storage requirements (RWX)."
+    },
+    {
+      "text": "rollback_plan",
+      "passed": true,
+      "evidence": "Section 10.2 includes explicit 'Rollback Procedure': stop KubeVirt VM, revert VMware snapshot, power on VMware VM, restore DNS. Pre-migration step includes taking a VMware snapshot as rollback point. Risk register (Section 13) covers 12 risks with mitigations."
+    }
+  ]
+}

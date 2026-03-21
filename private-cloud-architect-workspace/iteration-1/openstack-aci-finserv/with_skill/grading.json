@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "mentions_openstack",
+      "passed": true,
+      "evidence": "Executive summary states 'The platform is built on OpenStack for IaaS' and Section 7 provides detailed OpenStack platform design including Kolla-Ansible deployment, service catalog, HA architecture, and project structure."
+    },
+    {
+      "text": "cisco_aci_integration",
+      "passed": true,
+      "evidence": "Section 4 covers ACI fabric design in depth: spine-leaf topology with Nexus 9000, 3x APIC cluster, detailed tenant model with VRFs/BDs/EPGs (e.g., epg-cde-app, epg-cde-db), contracts table with provider/consumer EPGs and filters, and ACI-OpenStack integration via Cisco ACI Neutron ML2 plugin with OpFlex agent."
+    },
+    {
+      "text": "ceph_storage_design",
+      "passed": true,
+      "evidence": "Section 6 details Ceph architecture: 6 OSD nodes with BlueStore, pool layout (rbd-vms, rbd-ephemeral, rbd-images, rbd-backups with 3x replication; rgw-default with EC 4+2), CRUSH rules with rack-aware failure domains, and integration with Cinder/Glance/Nova."
+    },
+    {
+      "text": "pci_dss_compliance",
+      "passed": true,
+      "evidence": "Section 11.2 maps all 12 PCI-DSS requirements to specific controls. CDE is isolated in its own ACI VRF with no direct route to corporate VRF, contracts enforce whitelist-only, dm-crypt encryption at rest, immutable logging with 1-year retention, MFA via Keycloak, and two-person approval for CDE changes."
+    },
+    {
+      "text": "soc2_compliance",
+      "passed": true,
+      "evidence": "Section 11.3 maps all five SOC2 Trust Service Criteria (Security, Availability, Processing Integrity, Confidentiality, Privacy) to specific implementations including HA architecture, encryption, RBAC, audit trails, and data retention policies."
+    },
+    {
+      "text": "identity_management",
+      "passed": true,
+      "evidence": "Section 8 details a multi-layer identity architecture: Keycloak as central IdP (OIDC/SAML, MFA), FreeIPA for Linux host identity (LDAP/Kerberos, HBAC, SSH keys), Keystone federated with Keycloak via OIDC, HashiCorp Vault for secrets, and a full RBAC model."
+    },
+    {
+      "text": "monitoring_stack",
+      "passed": true,
+      "evidence": "Section 9 specifies Prometheus (HA with Thanos), Grafana dashboards, Loki for log aggregation, Alertmanager with tiered alerting (P1-P4), Wazuh as SIEM/HIDS, and detailed exporter coverage (node_exporter, ceph_exporter, libvirt_exporter, aci_exporter, etc.)."
+    },
+    {
+      "text": "automation_strategy",
+      "passed": true,
+      "evidence": "Section 10 covers Ansible via AWX for configuration management, OpenTofu for infrastructure provisioning, Packer for image building, GitLab CI/Gitea Actions for CI/CD pipelines, and includes detailed repository structure, day-2 automation playbooks, and Event-Driven Ansible for automated remediation."
+    },
+    {
+      "text": "team_size_appropriate",
+      "passed": true,
+      "evidence": "Section 14 defines a 6-person team with specific roles (Platform Lead, 2x OpenStack/Ceph Engineers, Network/Security Engineer, Automation Engineer, Monitoring/SRE), on-call rotation (1 week on / 5 weeks off), and emphasizes >95% automation coverage and cross-training. Design principle #6 states 'Operational simplicity over elegance'."
+    },
+    {
+      "text": "compute_sizing",
+      "passed": true,
+      "evidence": "Section 5.1 specifies 16 compute nodes with 2x AMD EPYC 9454 (48C each), 512GB RAM per node. Includes capacity math: 1,536 physical cores, 8,192 GB total RAM, supporting 500 VMs at ~33-40% utilization with AZ failover headroom. Section 13.1 provides a capacity vs demand table."
+    }
+  ]
+}

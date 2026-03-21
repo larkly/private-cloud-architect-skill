@@ -1,0 +1,62 @@
+{"expectations": [
+  {
+    "text": "swedish_classification_levels",
+    "passed": false,
+    "evidence": "Document lists 'HEMLIG/RESTRICTED (H/R)', 'HEMLIG/CONFIDENTIAL (H/C)', 'HEMLIG/SECRET (H/S)', 'HEMLIG/TOP SECRET (H/TS)' — these are NATO-style English translations, not the actual Swedish names (BEGRÄNSAT HEMLIG, HEMLIG, KVALIFICERAT HEMLIG). The document maps to English equivalents rather than using the correct Swedish classification terms."
+  },
+  {
+    "text": "sakerhetssskyddslagen",
+    "passed": true,
+    "evidence": "Section 2.1 lists 'Säkerhetsskyddslagen (2018:585)' as the 'Overarching security protection act' and it is clearly the primary governing framework, with Säkerhetsskyddsförordningen (2021:955) as the implementing regulation."
+  },
+  {
+    "text": "fmv_must_accreditation",
+    "passed": true,
+    "evidence": "Section 2.3 explicitly states 'FMV (Försvarets materielverk) is responsible for system accreditation of defense materiel IT systems' and 'MUST (Militära underrättelse- och säkerhetstjänsten) provides signals intelligence protection guidance and approves cryptographic solutions.'"
+  },
+  {
+    "text": "sapo_clearance_process",
+    "passed": true,
+    "evidence": "The document references Säpo-vetted clearances in the executive summary ('Säpo-vetted HEMLIG clearance'), Appendix C maps personnel security to 'Säpo clearances', Section 15.2 lists 'Personnel security plan — Clearance management, roles, training — Organization + Säpo', and incident reporting to Säpo is noted. The 12-person cleared constraint is tied to Säpo vetting."
+  },
+  {
+    "text": "tempest_requirements",
+    "passed": true,
+    "evidence": "Section 3.3 dedicates a subsection to 'TEMPEST / Emanation Security' specifying SDIP-27 Level B compliance, shielded rooms (skärmade rum), fiber optic cabling requirements, and TEMPEST-approved equipment. Section 5.1 reiterates SDIP-27 Level B compliant room requirements."
+  },
+  {
+    "text": "cleared_personnel_constraint",
+    "passed": true,
+    "evidence": "Section 14.1 breaks down all 12 cleared roles with specific counts (1 security officer, 1 team lead, 4 platform engineers, 3 app engineers, 2 security engineers, 1 on-call/backup). Section 14.2 covers on-call rotation (2 persons 24/7), two-person integrity rule, and 2-hour physical access requirement. Section 14.3 explicitly addresses the 28 non-cleared engineers' boundaries. Risk R04 addresses key personnel loss. Vendor HSM firmware updates require 'Vendor on-site with cleared escort.'"
+  },
+  {
+    "text": "data_sovereignty_sweden",
+    "passed": true,
+    "evidence": "Executive summary table states 'All infrastructure in Sweden — Data sovereignty requirement; all hardware in Swedish-territory facilities.' Design principle 7 states 'Swedish sovereignty: All hardware, software supply chain verification, and operational control remain within Sweden.' Section 5.1 specifies Location as 'Sweden'."
+  },
+  {
+    "text": "air_gap_not_just_firewall",
+    "passed": true,
+    "evidence": "Section 6.5 states 'No network path for data to leave the classified zone electronically' enforced by 'Physical topology: No cable or fiber connects classified zone to any external network in the outbound direction' plus a hardware data diode. Section 6.2 specifies a hardware data diode (Advenica). The architecture diagram shows physically separate zones with data diode/manual media as the only crossing point."
+  },
+  {
+    "text": "nationally_approved_crypto",
+    "passed": true,
+    "evidence": "Section 10.4 'MUST-Approved Cryptography' states: 'For HEMLIG/SECRET, MUST may require specific Swedish- or NATO-approved cryptographic implementations. Consult MUST early in the accreditation process. If MUST mandates national cryptographic devices... these must be sourced through FMV.' Appendix C maps Signalskydd to 'MUST-approved crypto.'"
+  },
+  {
+    "text": "cross_domain_data_flow",
+    "passed": true,
+    "evidence": "Section 6.2 details the data diode (Advenica SecuriCDS) for inbound-only transfer. Section 11.1 describes the full inbound transfer process with scanning, signature verification, SBOM analysis, and manual approval. Section 11.2 describes outbound transfer via declassification/downgrade review, approved removable media, and physical courier with chain of custody."
+  },
+  {
+    "text": "floss_preference_with_caveat",
+    "passed": false,
+    "evidence": "The document does not explicitly discuss FLOSS (Free/Libre/Open Source Software) preference or the tension between FLOSS and certified/approved products in classified environments. The technology stack includes a mix of open-source tools (Ceph, Kubernetes, Cilium) and commercial products (Thales HSM, Splunk) but never articulates a policy or recommendation about FLOSS preference."
+  },
+  {
+    "text": "no_us_centric_assumptions",
+    "passed": false,
+    "evidence": "While Swedish law is clearly primary, the document uses US-centric hardening as primary approaches: Section 11.3 recommends 'hardened per CIS RHEL 9 benchmark + STIGs' (STIGs are US DoD standards used as primary hardening, not just reference). RKE2 is promoted partly for 'FIPS 140-2 mode' and 'CIS 1.6+ profile' — US standards used as primary compliance measures rather than Swedish equivalents. HSM certification listed as 'FIPS 140-2 Level 3 minimum'. While Swedish framework is the overarching legal framework, the technical hardening relies heavily on US standards (STIG, FIPS, CIS) as primary benchmarks."
+  }
+]}

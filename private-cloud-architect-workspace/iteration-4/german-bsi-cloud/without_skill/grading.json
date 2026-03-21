@@ -1,0 +1,64 @@
+{
+  "expectations": [
+    {
+      "text": "german_classification_levels(all four)",
+      "passed": false,
+      "evidence": "Document only mentions VS-NfD as 'the lowest classification tier' but does not enumerate all four German classification levels (VS-NfD, VS-Vertraulich, Geheim, Streng Geheim)."
+    },
+    {
+      "text": "bsi_grundschutz(detail)",
+      "passed": true,
+      "evidence": "Extensive detail: references BSI-Standards 200-1/200-2/200-3, Schutzbedarf levels, Sicherheitskonzept requirement, UP Bund, SiSyPHuS hardening, ISO 27001 auf Basis von IT-Grundschutz certification, and verinice tooling."
+    },
+    {
+      "text": "c5_attestation",
+      "passed": true,
+      "evidence": "Section 5 covers C5:2020 in depth: 125 criteria across 17 domains listed, Type 2 attestation explained, ISAE 3402 audit process, phased roadmap with timelines, and annual re-attestation."
+    },
+    {
+      "text": "vs_nfd_approved_products",
+      "passed": true,
+      "evidence": "Section 2.2 and Section 6.4 detail VS-NfD-freigegebene products: SINA Box, genuscreen, NCP VS GovNet Connector for VPN; secunet sure for disk encryption; SINA Workstations. Procurement table in Section 9.1 with lead times."
+    },
+    {
+      "text": "bsi_crypto_requirements(TR series)",
+      "passed": true,
+      "evidence": "BSI TR-02102 (Parts 1-4) explicitly referenced in Sections 2.1, 3.6, and 5.2. Specific algorithms listed: AES-256, RSA >= 3000 bit, brainpoolP256r1 curves (BSI-preferred over NIST), TLS 1.2/1.3 with approved cipher suites, SHA-256."
+    },
+    {
+      "text": "data_sovereignty_germany",
+      "passed": true,
+      "evidence": "Executive summary states 'All data processing and storage occurs exclusively within the Federal Republic of Germany.' Section 6.3: 'VS-NfD data must never leave German territory.' No federation to foreign sites. Backup must remain in physically secured areas within Germany."
+    },
+    {
+      "text": "grundschutz_methodology(Bausteine)",
+      "passed": true,
+      "evidence": "Section 4.1 lists 18 specific Bausteine by ID and German title (OPS.1.1.3, SYS.1.5, NET.1.1, INF.2, CON.1, DER.1, etc.) with application notes for each. Schutzbedarf analysis and Risikoanalyse methodology also described."
+    },
+    {
+      "text": "floss_vs_certified_analysis",
+      "passed": true,
+      "evidence": "Section 2.2 provides structured analysis of where FLOSS is permissible, where BSI-approved products are mandatory, and grey areas. Section 7 gives a full decision matrix across 13 layers with viability assessment. Concludes ~80% FLOSS feasible."
+    },
+    {
+      "text": "openstack_grundschutz_fit",
+      "passed": true,
+      "evidence": "Section 3.7 maps OpenStack services to architecture roles. Section 4.1 maps Grundschutz Bausteine to OpenStack components (SYS.1.5 for KVM/Nova, NET.1.1 for OVN/Neutron, etc.). Section 3.3 cites SYS.1.5 for hypervisor. Architecture diagrams show how OpenStack fits the zone model."
+    },
+    {
+      "text": "eu_context(NIS2,EUCS,GDPR)",
+      "passed": false,
+      "evidence": "GDPR (DSGVO) is mentioned briefly in the regulations table. However, NIS2 and EUCS (EU Cloud Certification Scheme) are entirely absent from the document."
+    },
+    {
+      "text": "accreditation_lifecycle",
+      "passed": true,
+      "evidence": "Section 5.3 provides a detailed 5-phase attestation roadmap spanning ~20 months. Section 5.4 covers IT-Grundschutz certification with 3-year validity and annual surveillance audits. Continuous compliance phase described."
+    },
+    {
+      "text": "no_us_centric_assumptions",
+      "passed": true,
+      "evidence": "Architecture is entirely German/EU-oriented: BSI standards, German products (SINA, genuscreen, secunet), German agencies (CERT-Bund, ITZBund, BWI), brainpool curves preferred over NIST, EU-manufactured hardware recommended, German procurement entities (govdigital, Dataport). No FedRAMP, NIST SP 800, or US-centric references."
+    }
+  ]
+}

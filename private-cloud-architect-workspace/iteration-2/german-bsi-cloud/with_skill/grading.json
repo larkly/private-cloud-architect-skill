@@ -1,0 +1,62 @@
+{"expectations": [
+  {
+    "text": "german_classification_levels",
+    "passed": true,
+    "evidence": "Section 2.1 provides a table with all four levels: VS-NfD, VS-VERTRAULICH, GEHEIM, STRENG GEHEIM, plus OFFEN, with German terms and descriptions."
+  },
+  {
+    "text": "bsi_grundschutz",
+    "passed": true,
+    "evidence": "Section 2.2 explains BSI IT-Grundschutz in detail: lists BSI-Standards 200-1 through 200-4, describes the IT-Grundschutz Compendium with Bausteine, explains protection levels (Basis/Standard/Hoch), and certification options. Section 15 provides a full implementation roadmap with 8 phases."
+  },
+  {
+    "text": "c5_attestation",
+    "passed": true,
+    "evidence": "Section 2.3 explains C5:2020 with its 17 domains listed in a table. Section 16 details the full attestation process: Type 1 vs Type 2 attestation, the role of Wirtschaftspruefer following ISAE 3402/IDW PS 951, the 6-step process from scope definition through ongoing renewal, and additional criteria for VS-NfD."
+  },
+  {
+    "text": "vs_nfd_approved_products",
+    "passed": true,
+    "evidence": "Section 4 provides a detailed layer-by-layer analysis distinguishing where BSI-approved products are required (VPN, HSM, perimeter firewall, smartcards) vs where FLOSS is acceptable (hypervisor, OS, storage, SDN, monitoring, etc.), with specific approved product names like genua genuscreen, secunet SINA, Utimaco HSM."
+  },
+  {
+    "text": "bsi_crypto_requirements",
+    "passed": true,
+    "evidence": "Section 10.1 explicitly addresses BSI TR-02102, provides a table of BSI-approved algorithms with key lengths and BSI status. References BSI TR-03116 in section 2.4. Discusses BSI brainpool curves as preferred over NIST curves. Section 10.2 maps encryption mechanisms across all data states."
+  },
+  {
+    "text": "data_sovereignty_germany",
+    "passed": true,
+    "evidence": "Section 3.1 principle 1 states 'All data must reside within Germany at all times. No data replication, backup, or transit outside German borders. No use of cloud services with foreign-jurisdiction data access (CLOUD Act risk).' Section 2.4 mentions BDSG and GDPR. Section 14.2 requires data center located within Germany operated by German entity."
+  },
+  {
+    "text": "grundschutz_methodology",
+    "passed": true,
+    "evidence": "Section 15.1 describes the full methodology: Strukturanalyse, Schutzbedarfsfeststellung, Modellierung (mapping Bausteine), IT-Grundschutz-Check, Risk Analysis per BSI-Standard 200-3. Section 15.2 lists specific Bausteine across process, system, network, infrastructure, and application layers. Appendix (section 23) maps Bausteine to architecture components."
+  },
+  {
+    "text": "floss_vs_certified_analysis",
+    "passed": true,
+    "evidence": "Section 4.1 provides 10+ layer-by-layer analyses with Decision, Rationale, and Hardening for each. The summary matrix in 4.2 lists 18 components. The analysis explains WHY each layer can or cannot use FLOSS (e.g., VPN requires BSI approval, but KVM satisfies SYS.1.5 through configuration)."
+  },
+  {
+    "text": "openstack_grundschutz_fit",
+    "passed": true,
+    "evidence": "Appendix section 23 provides a detailed mapping of IT-Grundschutz Bausteine to specific OpenStack components (SYS.1.5 to KVM compute, NET.3.2 to OVN security groups + genua, ORP.4 to Keycloak+Keystone). Section 4.1 explains how KVM satisfies SYS.1.5 requirements and how OpenStack can be hardened per IT-Grundschutz."
+  },
+  {
+    "text": "eu_context",
+    "passed": false,
+    "evidence": "The document only mentions Gaia-X and 'European digital sovereignty initiatives' in passing. NIS2 directive is never mentioned. EUCS (EU Cybersecurity Certification Scheme) is never mentioned. GDPR is mentioned briefly in section 2.4 but not placed in broader EU regulatory context. The document treats German requirements largely in isolation from EU frameworks."
+  },
+  {
+    "text": "accreditation_lifecycle",
+    "passed": true,
+    "evidence": "Section 15.1 describes the full 8-phase certification process from ISMS establishment through BSI audit. States certificate is 'valid for 3 years with annual surveillance audits.' Section 21 Phase 5 describes steady state: 'Annual IT-Grundschutz surveillance audit, Annual C5 Type 2 renewal, Continuous compliance monitoring.' C5 section describes ongoing annual Type 2 renewal."
+  },
+  {
+    "text": "no_us_centric_assumptions",
+    "passed": true,
+    "evidence": "No mention of STIG, FedRAMP, or IL levels anywhere in the document. BSI IT-Grundschutz is the primary framework throughout. FIPS 140-2/3 is mentioned once as an alternative validation alongside Common Criteria, not as a primary standard. CIS benchmarks are used for hardening but as a supplement to BSI IT-Grundschutz profiles, not as primary."
+  }
+]}
