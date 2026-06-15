@@ -1,0 +1,10 @@
+{
+  "line-length": false,
+  "no-duplicate-heading": false,
+  "first-line-heading": false,
+  "fenced-code-language": false,
+  "table-column-style": false,
+  "blanks-around-fences": true,
+  "blanks-around-headings": true,
+  "blanks-around-lists": true
+}

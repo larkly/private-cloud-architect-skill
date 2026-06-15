@@ -26,3 +26,5 @@ jobs:
           globs: |
             *.md
             **/*.md
+            !dev/**/*.md
+          config: .markdownlint.json
