@@ -21,7 +21,7 @@ jobs:
           done
 
       - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v16
+        uses: DavidAnson/markdownlint-cli2-action@v23
         with:
           globs: |
             *.md
