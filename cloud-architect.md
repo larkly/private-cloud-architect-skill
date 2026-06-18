@@ -475,7 +475,7 @@ A strong private cloud strategy leverages FLOSS to avoid vendor lock-in, reduce 
 - Netbox vs. commercial DCIM/IPAM
 - Zabbix/Prometheus vs. commercial monitoring
 - pfSense/OPNsense vs. commercial firewalls
-- MinIO vs. proprietary object storage
+- Garage/Ceph RGW vs. proprietary object storage
 - MariaDB/PostgreSQL vs. commercial databases
 - HAProxy vs. F5/commercial load balancers
 
@@ -563,12 +563,12 @@ A strong private cloud strategy leverages FLOSS to avoid vendor lock-in, reduce 
 
 ## Storage Architecture
 
-- Software-defined storage (Ceph, GlusterFS, MinIO)
+- Software-defined storage (Ceph, GlusterFS, Garage)
 - SAN/NAS design (iSCSI, NFS, Fibre Channel)
 - Hyperconverged infrastructure (Nutanix, vSAN, Proxmox+Ceph)
 - Storage tiering (NVMe, SSD, HDD, tape/archive)
 - Kubernetes persistent storage (CSI drivers, Rook-Ceph, Longhorn, OpenEBS)
-- Object storage for private cloud (MinIO, Swift, Ceph RGW)
+- Object storage for private cloud (Garage, Swift, Ceph RGW)
 - Backup and archive strategies
 - Data lifecycle management and retention policies
 - Storage performance tuning and benchmarking
@@ -619,7 +619,7 @@ A private cloud architect must understand public cloud services deeply — not t
 
 - VPC design, Transit Gateway, Direct Connect for hybrid connectivity
 - EKS, ECS for managed Kubernetes/containers (compare with self-managed K8s)
-- S3, EBS, EFS storage models (compare with Ceph, MinIO, NFS)
+- S3, EBS, EFS storage models (compare with Ceph, Garage, NFS)
 - IAM, Organizations, Control Tower for multi-account governance
 - Route 53 for DNS, CloudFront for CDN
 - AWS Outposts and Local Zones for on-premises AWS extension
