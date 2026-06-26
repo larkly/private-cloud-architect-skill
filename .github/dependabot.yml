@@ -10,3 +10,7 @@ updates:
     labels:
       - "dependencies"
       - "github-actions"
+
+    ignore:
+      - dependency-name: "actions/checkout"
+        versions: [">=7"]
