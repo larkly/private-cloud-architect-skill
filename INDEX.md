@@ -15,5 +15,4 @@
 
 ## Development
 
-- CI pipeline (markdown-lint) is in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 - The `dev/` directory contains performance evaluation and benchmark outputs from testing the skill.
